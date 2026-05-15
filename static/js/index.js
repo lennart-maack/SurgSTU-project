@@ -92,8 +92,8 @@ window.addEventListener('scroll', function() {
 
 // Video carousel autoplay when in view
 function setupVideoCarouselAutoplay() {
-    const carouselVideos = document.querySelectorAll('.results-carousel video');
-    
+    const carouselVideos = document.querySelectorAll('.results-carousel video, .qa-grid video');
+
     if (carouselVideos.length === 0) return;
     
     const observer = new IntersectionObserver((entries) => {

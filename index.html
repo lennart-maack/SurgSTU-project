@@ -1,30 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
-  <!-- Replace the content tag with appropriate information -->
-  <meta name="description" content="DESCRIPTION META TAG">
-  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
-  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
-  <meta property="og:url" content="URL OF THE WEBSITE"/>
-  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
-  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta name="description" content="SurgSTU is a deterministic, template-driven pipeline that turns publicly available surgical-video annotations (CholecT50 + ProstaTD) into a large, fine-grained spatial-temporal question-answering dataset of 179,912 conversations.">
+  <meta name="keywords" content="surgical video, vision-language models, spatial-temporal QA, CholecT50, ProstaTD, instrument grounding, dataset, CVPR 2026, DataCV">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="SurgSTU: A Deterministic Pipeline for Spatial-Temporal Surgical QA"/>
+  <meta property="og:description" content="A template-driven pipeline that turns CholecT50 and ProstaTD annotations into 179,912 fine-grained spatial-temporal QA conversations across 36 subcategories."/>
+  <meta property="og:url" content=""/>
+  <meta property="og:image" content="static/images/carousel1.jpg"/>
   <meta property="og:image:width" content="1200"/>
   <meta property="og:image:height" content="630"/>
 
-
-  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
-  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
-  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
-  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:title" content="SurgSTU: A Deterministic Pipeline for Spatial-Temporal Surgical QA">
+  <meta name="twitter:description" content="A template-driven pipeline that turns CholecT50 and ProstaTD annotations into 179,912 fine-grained spatial-temporal QA conversations across 36 subcategories.">
+  <meta name="twitter:image" content="static/images/carousel1.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <!-- Keywords for your paper to be indexed by-->
-  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-  <title>Academic Project Page</title>
+  <title>SurgSTU &mdash; Spatial-Temporal Understanding of Surgical Video</title>
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   rel="stylesheet">
@@ -52,239 +46,525 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">SurgSTU Project Page</h1>
+            <h1 class="title is-1 publication-title">SurgSTU</h1>
+            <p class="subtitle is-4 publication-subtitle">An Approach to Enriching Surgical Video Datasets for Fine-Grained Spatial-Temporal Understanding of Vision-Language Models</p>
             <div class="is-size-5 publication-authors">
-              <!-- Paper authors -->
               <span class="author-block">
                 <a href="https://scholar.google.de/citations?user=svGcph8AAAAJ&hl=de" target="_blank">Lennart Maack</a><sup>*, 1</sup>
+              </span>
+              <span class="author-block">
+                <a>Alexander Schlaefer</a><sup>1</sup>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup> Institute of Medical Technology and Intelligent Systems, Hamburg University of Technology, Germany</span>
+              <span class="eql-cntrb"><small><br><sup>*</sup>Corresponding author (lennart.maack@tuhh.de)</small></span>
+            </div>
+
+            <span class="publication-venue">DataCV @ CVPR 2026 Workshop</span>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- Datasets (disabled until camera-ready) -->
+                <span class="link-block">
+                  <a class="external-link button is-normal is-rounded is-dark is-disabled"
+                     aria-disabled="true" tabindex="-1"
+                     title="Coming with the camera-ready release">
+                    <span class="icon"><i class="fas fa-database"></i></span>
+                    <span>Datasets</span>
+                  </a>
                 </span>
-                  <span class="author-block">
-                    <a>Alexander Schlaefer</a><sup>1</sup>
-                  </span>
-                  </div>
 
-                  <div class="is-size-5 publication-authors">
-                    <span class="author-block">1 Institute of Medical Technology and Intelligent Systems, Hamburg University of Technology, Germany
-                      <!-- <br>Submitted to... -->
-                    </span>
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Corresponding author (lennart.maack@tuhh.de)</small></span>
-                  </div>
-
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- Arxiv PDF link -->
-                      <!-- <span class="link-block">
-                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span> -->
-                      </a>
-                    </span>
-
-                    <!-- Supplementary PDF link -->
-                    <span class="link-block">
-                      <a href="" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                        <i class="fas fa-database"></i>
-                        </span>
-                      <span>Datasets</span>
-                    </a>
-                  </span>
-
-                  <!-- Github link -->
-                  <span class="link-block">
-                    <a href="" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
+                <!-- Code (disabled until camera-ready) -->
+                <span class="link-block">
+                  <a class="external-link button is-normal is-rounded is-dark is-disabled"
+                     aria-disabled="true" tabindex="-1"
+                     title="Coming with the camera-ready release">
+                    <span class="icon"><i class="fab fa-github"></i></span>
                     <span>Code</span>
                   </a>
                 </span>
 
-                <!-- ArXiv abstract Link -->
+                <!-- Paper PDF (disabled until camera-ready) -->
+                <span class="link-block">
+                  <a class="external-link button is-normal is-rounded is-dark is-disabled"
+                     aria-disabled="true" tabindex="-1"
+                     title="Coming with the camera-ready release">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+
+                <!-- arXiv (active) -->
                 <span class="link-block">
                   <a href="https://arxiv.org/abs/2604.00784" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="fas fa-file"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span>
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="ai ai-arxiv"></i></span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
 
-<!-- Teaser video-->
-<!-- <section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <video poster="" id="tree" autoplay controls muted loop height="100%">
-        <source src="static/videos/banner_video.mp4"
-        type="video/mp4">
-      </video>
-      <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
-      </h2>
-    </div>
-  </div>
-</section> -->
-<!-- End teaser video -->
-
-<!-- Paper abstract -->
- 
-<!-- End paper abstract -->
-
-
-<!-- Image carousel -->
-<!-- <section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <img src="static/images/carousel1.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
+  <!-- Abstract -->
+  <section class="section abstract-section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Abstract</h2>
+      <div class="content has-text-justified">
+        <p>
+          We introduce <strong>SurgSTU</strong>, a deterministic, template-driven pipeline that turns publicly available surgical-video annotations (CholecT50 + ProstaTD) into a large, fine-grained spatial-temporal question-answering dataset. The pipeline first normalizes every per-frame annotation into an <em>Event Tuple</em> &mdash; timestamp in seconds, instrument class, persistent instance id, normalized bounding box, verb, and target &mdash; then fills predefined task templates against continuity- and interestingness-filtered windows. A geometric instance-id tracker preserves same-class duplicates end-to-end; dataset-level rejection sampling damps modal-answer shortcuts on 14 categorical templates; explicit refusal samples discourage hallucination on absent instruments.
+        </p>
+        <p>
+          Applied to ~6,700 clips across laparoscopic cholecystectomy and robot-assisted prostatectomy, SurgSTU yields <strong>179,912 QA conversations</strong> spanning five task families: spatial-temporal grounding, referred instrument-interaction captioning, spatial-temporal relation comparison, multi-choice (classes / existence / counting), and chain-of-thought interaction. Splits are leakage-safe at the procedure level. The pipeline is fully reproducible from a single random seed and does not depend on a language-model rewriter in any stage. We release the pipeline, the generated dataset, and a Qwen3-VL fine-tuning recipe as a downstream benchmark.
+        </p>
       </div>
-      <div class="item">
-        <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
     </div>
-  </div>
-</div>
-</div>
-</section> -->
-<!-- End image carousel -->
+  </section>
+  <!-- End abstract -->
 
 
+  <!-- Dataset at a glance -->
+  <section class="section stats-section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Dataset at a glance</h2>
+      <div class="stat-strip">
+        <div class="stat-card">
+          <div class="stat-num">179,912</div>
+          <div class="stat-caption">QA conversations</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">~6,700</div>
+          <div class="stat-caption">distinct video clips</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">2</div>
+          <div class="stat-caption">surgical procedures</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">36</div>
+          <div class="stat-caption">active QA subcategories</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">5.0%</div>
+          <div class="stat-caption">calibrated refusal rate</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">seed 42</div>
+          <div class="stat-caption">byte-identical regeneration</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End dataset at a glance -->
 
 
-<!-- Youtube video -->
-<!-- <section class="hero is-small is-light">
-  <div class="hero-body">
+  <!-- Question type overview -->
+  <section class="section qa-types-section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Question types</h2>
+      <p class="section-lead">
+        Three deterministic generators emit 36 active subcategories. Every question is filled from a Python template against a continuity- and interestingness-filtered window of Event Tuples &mdash; no LLM rewrites or paraphrases anywhere in the pipeline.
+      </p>
+
+      <div class="columns is-multiline qa-type-cards">
+
+        <!-- SpatioTemporal -->
+        <div class="column is-one-third">
+          <div class="qa-type-card">
+            <div class="qa-type-header">
+              <span class="chip chip-spatio">SpatioTemporal</span>
+              <span class="qa-type-count">11 subcategories</span>
+            </div>
+            <p class="qa-type-summary">Bbox grounding, trajectories, frame-region classification, reverse grounding, and explicit refusals.</p>
+            <details class="qa-type-details">
+              <summary>Show all 11 subcategories</summary>
+              <ul class="subcat-list">
+                <li><code>locate</code> <span class="diff diff-easy">easy</span><br><em>"Locate the grasper at 4.20 s and provide its bounding box."</em></li>
+                <li><code>window</code> <span class="diff diff-easy">easy</span><br><em>"For every instrument visible at 4.20 s, provide a temporal window during which it remains visible."</em></li>
+                <li><code>identify_bbox</code> <span class="diff diff-easy">easy</span><br><em>"Which instrument is located at the bounding box <code>[412, 188, 591, 374]</code> at 4.20 s?"</em></li>
+                <li><code>segment</code> <span class="diff diff-medium">medium</span><br><em>"In which of the 3&times;3 frame regions does the grasper reside at 4.20 s?"</em></li>
+                <li><code>closest</code> <span class="diff diff-easy">easy</span><br><em>"Which instrument is closest to the coordinates <code>[0.43, 0.58]</code> at 4.20 s?"</em></li>
+                <li><code>trajectory</code> <span class="diff diff-medium">medium</span><br><em>"Trace the trajectory of the grasper between 4.20 s and 7.80 s as bounding boxes at the leftmost and rightmost extrema."</em></li>
+                <li><code>rel_pos</code> <span class="diff diff-medium">medium</span><br><em>"Describe the relative position of the grasper with respect to the hook at 4.20 s."</em></li>
+                <li><code>rel_change</code> <span class="diff diff-hard">hard</span><br><em>"Between 4.20 s and 7.80 s, did the grasper move closer to, further from, or approximately maintain its distance from the hook?"</em></li>
+                <li><code>locate_by_action</code> <span class="diff diff-medium">medium</span><br><em>"At 4.20 s, provide the bounding box of the instrument performing &lsquo;grasp&rsquo;."</em></li>
+                <li><code>locate_by_target</code> <span class="diff diff-medium">medium</span><br><em>"At 4.20 s, locate the instrument interacting with the gallbladder."</em></li>
+                <li><code>refusal_absent_instrument</code> <span class="diff diff-medium">medium</span><br><em>"Where is the bipolar at 4.20 s?" &mdash; answer: not present in this clip.</em></li>
+              </ul>
+            </details>
+          </div>
+        </div>
+
+        <!-- MultiChoice -->
+        <div class="column is-one-third">
+          <div class="qa-type-card">
+            <div class="qa-type-header">
+              <span class="chip chip-multichoice">MultiChoice</span>
+              <span class="qa-type-count">7 subcategories</span>
+            </div>
+            <p class="qa-type-summary">Four-way and binary MCQs over instrument classes, presence, and counting &mdash; with distractors drawn from the instrument vocabulary.</p>
+            <details class="qa-type-details">
+              <summary>Show all 7 subcategories</summary>
+              <ul class="subcat-list">
+                <li><code>Classes</code> <span class="diff diff-easy">easy</span><br><em>"Which set of instruments is visible at 4.20 s?"</em></li>
+                <li><code>Existence:global</code> <span class="diff diff-easy">easy</span><br><em>"Is a bipolar present anywhere in this clip? (Yes / No)"</em></li>
+                <li><code>Existence:local_inst</code> <span class="diff diff-easy">easy</span><br><em>"Is the grasper present at 4.20 s? (Yes / No)"</em></li>
+                <li><code>Existence:local_target</code> <span class="diff diff-medium">medium</span><br><em>"Is any instrument interacting with the gallbladder at 4.20 s? (Yes / No)"</em></li>
+                <li><code>Counting:distinct</code> <span class="diff diff-medium">medium</span><br><em>"How many distinct instrument classes appear between 4.20 s and 9.30 s?"</em></li>
+                <li><code>Counting:specific</code> <span class="diff diff-medium">medium</span><br><em>"How many graspers are visible at 4.20 s?"</em></li>
+                <li><code>Counting:concurrent</code> <span class="diff diff-medium">medium</span><br><em>"What is the maximum number of instruments visible simultaneously between 4.20 s and 9.30 s?"</em></li>
+              </ul>
+            </details>
+          </div>
+        </div>
+
+        <!-- Interaction -->
+        <div class="column is-one-third">
+          <div class="qa-type-card">
+            <div class="qa-type-header">
+              <span class="chip chip-interaction">Interaction</span>
+              <span class="qa-type-count">18 subcategories</span>
+            </div>
+            <p class="qa-type-summary">What-is-doing-what at a point, plus temporal aggregation, ordering, and compositional whole-clip queries.</p>
+            <details class="qa-type-details">
+              <summary>Show all 18 subcategories</summary>
+              <p class="bucket-label">Bucket A &mdash; temporal aggregation</p>
+              <ul class="subcat-list">
+                <li><code>interaction_duration</code> <span class="diff diff-medium">medium</span><br><em>"For how long does the grasper interact with the gallbladder between 0 s and 14 s?"</em></li>
+                <li><code>interaction_count</code> <span class="diff diff-medium">medium</span><br><em>"How many times does the grasper perform &lsquo;grasp&rsquo; over the clip?"</em></li>
+                <li><code>longest_continuous_action</code> <span class="diff diff-hard">hard</span><br><em>"What is the longest continuous (grasp, gallbladder) interaction in the clip?"</em></li>
+                <li><code>idle_duration</code> <span class="diff diff-medium">medium</span><br><em>"What fraction of the clip is the grasper idling?"</em></li>
+              </ul>
+              <p class="bucket-label">Bucket B &mdash; ordering</p>
+              <ul class="subcat-list">
+                <li><code>first_appearance_time</code> <span class="diff diff-easy">easy</span><br><em>"At what time does the grasper first appear?"</em></li>
+                <li><code>last_appearance_time</code> <span class="diff diff-easy">easy</span><br><em>"At what time is the grasper last visible?"</em></li>
+                <li><code>first_action</code> <span class="diff diff-medium">medium</span><br><em>"What is the first action the grasper performs?"</em></li>
+                <li><code>action_sequence</code> <span class="diff diff-hard">hard</span><br><em>"List the chronological sequence of (verb, target) pairs the grasper performs."</em></li>
+              </ul>
+              <p class="bucket-label">Bucket C &mdash; whole-clip MCQ</p>
+              <ul class="subcat-list">
+                <li><code>most_active_instrument</code> <span class="diff diff-medium">medium</span><br><em>"Which instrument is most active over the whole clip?"</em></li>
+                <li><code>most_target_diversity_instrument</code> <span class="diff diff-hard">hard</span><br><em>"Which instrument interacts with the most distinct anatomical targets?"</em></li>
+                <li><code>dominant_verb</code> <span class="diff diff-medium">medium</span><br><em>"What is the dominant verb performed across the clip?"</em></li>
+                <li><code>distinct_targets_touched</code> <span class="diff diff-medium">medium</span><br><em>"How many distinct anatomical targets does any instrument touch in the clip?"</em></li>
+              </ul>
+              <p class="bucket-label">Legacy + refusal</p>
+              <ul class="subcat-list">
+                <li><code>target_interaction</code> <span class="diff diff-medium">medium</span><br><em>"At 4.20 s, what target is the grasper interacting with?"</em></li>
+                <li><code>action_status</code> <span class="diff diff-medium">medium</span><br><em>"At 4.20 s, is the grasper actively performing an action or idling?"</em></li>
+                <li><code>next_action</code> <span class="diff diff-hard">hard</span><br><em>"What action does the grasper perform next after 4.20 s?"</em></li>
+                <li><code>comparison</code> <span class="diff diff-hard">hard</span><br><em>"Between 4.20 s and 7.80 s, do the grasper and the hook interact with the same target?"</em></li>
+                <li><code>reverse_target</code> <span class="diff diff-medium">medium</span><br><em>"At 4.20 s, which instrument is interacting with the cystic duct?"</em></li>
+                <li><code>refusal_no_specific_action</code> <span class="diff diff-easy">easy</span><br><em>"What action is the grasper performing at 4.20 s?" &mdash; answer: idling, no specific action.</em></li>
+              </ul>
+            </details>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- End question type overview -->
+
+
+  <!-- QA video gallery -->
+  <section class="section gallery-section">
+    <div class="container is-max-widescreen">
+      <h2 class="title is-3">QA samples in action</h2>
+      <p class="section-lead">
+        Each clip shows a generated question, its time window, the bounding-box overlay (yellow-orange = question anchor, cyan = answer anchor), and the ground-truth answer panel. Rendered by <code>utils/data/verify_qa_overlay.py</code> with the project-page-tuned settings (<code>--wordmark --text-font-scale 0.7</code>). All eight clips were drawn from the SurgSTU corpus and reflect the post-Phase-2.6 dataset state.
+      </p>
+      <div class="qa-grid">
+
+        <figure class="qa-card">
+          <video autoplay muted loop playsinline preload="metadata"
+                 src="static/videos/qa_examples/spatiotemporal_locate.mp4"></video>
+          <figcaption>
+            <span class="chip chip-spatio">SpatioTemporal</span>
+            <span class="qa-subcat">locate</span>
+            <span class="diff diff-easy">easy</span>
+            <span class="qa-proc">cholec</span>
+          </figcaption>
+        </figure>
+
+        <figure class="qa-card">
+          <video autoplay muted loop playsinline preload="metadata"
+                 src="static/videos/qa_examples/spatiotemporal_locate_by_action.mp4"></video>
+          <figcaption>
+            <span class="chip chip-spatio">SpatioTemporal</span>
+            <span class="qa-subcat">locate_by_action</span>
+            <span class="diff diff-medium">medium</span>
+            <span class="qa-proc">prosta</span>
+          </figcaption>
+        </figure>
+
+        <figure class="qa-card">
+          <video autoplay muted loop playsinline preload="metadata"
+                 src="static/videos/qa_examples/multichoice_existence_global.mp4"></video>
+          <figcaption>
+            <span class="chip chip-multichoice">MultiChoice</span>
+            <span class="qa-subcat">Existence:global</span>
+            <span class="diff diff-easy">easy</span>
+            <span class="qa-proc">prosta</span>
+          </figcaption>
+        </figure>
+
+        <figure class="qa-card">
+          <video autoplay muted loop playsinline preload="metadata"
+                 src="static/videos/qa_examples/interaction_next_action.mp4"></video>
+          <figcaption>
+            <span class="chip chip-interaction">Interaction</span>
+            <span class="qa-subcat">next_action</span>
+            <span class="diff diff-hard">hard</span>
+            <span class="qa-proc">prosta</span>
+          </figcaption>
+        </figure>
+
+        <figure class="qa-card">
+          <video autoplay muted loop playsinline preload="metadata"
+                 src="static/videos/qa_examples/multichoice_counting_concurrent.mp4"></video>
+          <figcaption>
+            <span class="chip chip-multichoice">MultiChoice</span>
+            <span class="qa-subcat">Counting:concurrent</span>
+            <span class="diff diff-medium">medium</span>
+            <span class="qa-proc">cholec</span>
+          </figcaption>
+        </figure>
+
+        <figure class="qa-card">
+          <video autoplay muted loop playsinline preload="metadata"
+                 src="static/videos/qa_examples/interaction_refusal_no_specific_action.mp4"></video>
+          <figcaption>
+            <span class="chip chip-interaction">Interaction</span>
+            <span class="qa-subcat">refusal_no_specific_action</span>
+            <span class="diff diff-easy">easy</span>
+            <span class="qa-proc">prosta</span>
+          </figcaption>
+        </figure>
+
+      </div>
+      <p class="gallery-footer">
+        Regenerate the gallery with <code>bash SurgSTU-project/static/videos/_generate.sh</code> after any Stage&nbsp;2 re-run.
+      </p>
+    </div>
+  </section>
+  <!-- End QA video gallery -->
+
+
+  <!-- Pipeline at a glance -->
+  <section class="section pipeline-section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Pipeline at a glance</h2>
+      <div class="pipeline-strip">
+        <div class="pipeline-step">
+          <div class="step-num">Stage&nbsp;1</div>
+          <h4 class="step-title">Event Tuples</h4>
+          <p class="step-desc">Per-frame JSON annotations are normalized into <code>(t_sec, c_i, inst_id, x1, x2, y1, y2, c_v, c_t)</code> rows. A geometric instance-id tracker handles same-class duplicates.</p>
+        </div>
+        <div class="pipeline-step">
+          <div class="step-num">Stage&nbsp;2</div>
+          <h4 class="step-title">Template-driven QA</h4>
+          <p class="step-desc">Three deterministic generators (<code>SpatioTemporal</code>, <code>MultiChoice</code>, <code>Interaction</code>) fill QA templates against continuity-filtered windows. No LLM in the loop.</p>
+        </div>
+        <div class="pipeline-step">
+          <div class="step-num">Stage&nbsp;3</div>
+          <h4 class="step-title">Bbox formatting</h4>
+          <p class="step-desc">Emitted bboxes are converted to Qwen-style <code>{"bbox_2d": [x1, y1, x2, y2]}</code> in normalized <code>[0, 1000]</code> space.</p>
+        </div>
+        <div class="pipeline-step">
+          <div class="step-num">Stage&nbsp;4</div>
+          <h4 class="step-title">Image-frame QA</h4>
+          <p class="step-desc">A complementary single-frame stream (Caption / EasyDescription / SpatialAction) is sampled at a configurable FPS.</p>
+        </div>
+        <div class="pipeline-step">
+          <div class="step-num">Stage&nbsp;5</div>
+          <h4 class="step-title">Leakage-safe splits</h4>
+          <p class="step-desc">A single procedure-to-split map is applied to both modalities so no procedure leaks between train and test.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End pipeline at a glance -->
+
+
+  <!-- FAQ -->
+  <section class="section faq-section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Design choices &mdash; FAQ</h2>
+      <p class="section-lead">
+        Reviewer-style questions about data quality, residual skews, and reproducibility. We surface honest numbers rather than over-prune the corpus.
+      </p>
+
+      <details class="faq-item">
+        <summary>The pipeline is fully template-driven &mdash; no LLM augmentation?</summary>
+        <div class="faq-answer">
+          <p>Correct. Every QA is produced by a small set of deterministic Python templates that read normalized event tuples and fill them in. No LLM rewrites or paraphrases the questions. This makes the dataset reproducible from a single seed (default 42) and decouples its quality from any third-party model.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How do you defend against the model learning the modal answer instead of looking at the video?</summary>
+        <div class="faq-answer">
+          <p>Phase 2.5 introduced per-procedure, per-correct-answer rejection sampling for 14 categorical templates (<code>MOST_ACTIVE_ACCEPT</code>, <code>IDLE_DURATION_ACCEPT</code>, etc.). The orchestrator probabilistically drops samples whose correct answer is over-represented for that procedure. Phase 2.6 re-tuned these maps after gates were tightened. Top-1 share dropped substantially &mdash; e.g. <code>reverse_target</code> 91&nbsp;% &rarr; 51&nbsp;%, <code>idle_duration</code> 93&nbsp;% &rarr; 49&nbsp;%.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Are any templates still skewed after rejection sampling? Be specific.</summary>
+        <div class="faq-answer">
+          <p>Yes &mdash; we surface them openly rather than over-prune the corpus. After Phase 2.6 iteration&nbsp;2:</p>
+          <ul>
+            <li><code>most_active_instrument</code> (cholec) sits at <strong>41&nbsp;%</strong> on <code>grasper</code></li>
+            <li><code>idle_duration</code> (cholec) sits at <strong>45&nbsp;%</strong> on the <code>[50%+]</code> bucket</li>
+            <li><code>comparison</code> (cholec) sits at <strong>52&nbsp;%</strong> on <code>Yes</code></li>
+            <li><code>rel_change</code> (cholec) sits at <strong>46&nbsp;%</strong> on <code>maintained</code></li>
+          </ul>
+          <p>Pushing them further would either cost additional dataset shrinkage (the Phase&nbsp;2.6 retune already cost 11.3&nbsp;%) or require new accept maps for templates not yet covered. We chose visibility over aggressive pruning.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Where do the bounding boxes come from? Are CholecT50 and ProstaTD annotated the same way?</summary>
+        <div class="faq-answer">
+          <p>No &mdash; and this matters. CholecT50 bboxes are pulled from CholecTrack20, an open companion release. ProstaTD bboxes are internally annotated pending an official bbox release for ProstaTD. The pipeline normalizes both to the same <code>(x1, x2, y1, y2)</code> order against the actual video stream's dimensions, but downstream consumers should be aware of the provenance asymmetry.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Why are the continuity gates so tight (0.6 normalized units/sec, 0.7&nbsp;s gap)?</summary>
+        <div class="faq-answer">
+          <p>Phase&nbsp;2.6 tightened the spatial-continuity gate from 1.0 to 0.6 normalized-diagonal/sec and the temporal-gap gate from 1.0&nbsp;s to 0.7&nbsp;s. The earlier values let bbox-jitter tracks through whose centroid moved unrealistically between frames. Tightening cost about 11.3&nbsp;% of the corpus but produced cleaner trajectories &mdash; the <code>rel_change</code> template required the tightening before the "approximately maintained" class became meaningful (the <code>REL_CHANGE_MIN_DELTA</code> threshold also went 0.05 &rarr; 0.20).</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>There are ~5&nbsp;% refusal samples in the dataset &mdash; why include them, and why that fraction?</summary>
+        <div class="faq-answer">
+          <p>Two refusal templates are wired in: <code>refusal_absent_instrument</code> (asked about an instrument that never appears in the clip) and <code>refusal_no_specific_action</code> (asked about a verb when the instrument is idling). Without them, a model learns to always produce a confident bounding box or verb. The 5&nbsp;% target is a heuristic cap; higher rates push models toward over-refusal on legitimate queries.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Why was the velocity-estimation subcategory removed?</summary>
+        <div class="faq-answer">
+          <p>Bbox-centroid velocity in raw camera coordinates cannot separate genuine instrument motion from camera ego-motion &mdash; pan, zoom, and rotation are common in surgical video and bias the centroid. Rather than ship a metric the model could be right or wrong for the wrong reason, we removed <code>gen_velocity</code> entirely. The <code>trajectory</code> subcategory remains because it grounds in absolute extreme positions rather than rates.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Is the dataset reproducible end-to-end?</summary>
+        <div class="faq-answer">
+          <p>Yes. All randomness is seeded at the top of Stage&nbsp;2 (<code>random.seed(RANDOM_SEED)</code>, default 42). Stage&nbsp;4 takes <code>--seed</code> explicitly. Stage&nbsp;5 sorts procedure IDs before shuffling with <code>np.random.default_rng(seed)</code> so splits are machine-independent. Re-running with the same seed produces byte-identical output.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How are two same-class instruments (e.g. two graspers) disambiguated?</summary>
+        <div class="faq-answer">
+          <p>Every event tuple carries an <code>inst_id</code> alongside the class id. Stage&nbsp;1 runs a geometric tracker (<code>_assign_instance_ids_for_class</code>) that propagates persistent instance ids via greedy nearest-centroid assignment, with a 1.0&nbsp;s re-id window for brief occlusions. Generators key all tracks on <code>(c_i, inst_id)</code>, and answer text gets an <code>(instance&nbsp;1)</code> suffix only when two same-class instruments coexist &mdash; single-instance clips read identically to the pre-instance schema.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How does the train / val / test split prevent leakage?</summary>
+        <div class="faq-answer">
+          <p>A single procedure-to-split map is built once (Stage&nbsp;5) and applied to both modalities. So a <code>cholec_42</code> clip lands in the same split for video and image streams, and an <code>assert_no_overlap</code> check runs before any file is written. Procedure IDs are normalized via regex (<code>cholec_\d+</code> / <code>prostaTD_\w+</code>) so different naming conventions collapse to the same key.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Where do the actual question texts live? Can I read them?</summary>
+        <div class="faq-answer">
+          <p>The question wording for every active subcategory is in <code>QA_TEMPLATE_INVENTORY_AND_BRAINSTORM.md</code> (Part&nbsp;I) with the answer schema, gate constants, and an assessment per template. The runtime templates are hardcoded inline in <code>utils/data/create_surgSTU_qa_dataset.py</code>; the standalone <code>utils/data/qa_templates.py</code> file mirrors them as documentation but is <strong>not</strong> used at runtime &mdash; editing it alone has no effect on generated data.</p>
+        </div>
+      </details>
+
+    </div>
+  </section>
+  <!-- End FAQ -->
+
+
+  <!-- Limitations & roadmap -->
+  <section class="section limitations-section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Limitations &amp; roadmap</h2>
+      <ul class="limitations-list">
+        <li><strong>Workflow / phase-step queries</strong> are out of scope for this release because Stage&nbsp;1 currently discards the phase and step columns.</li>
+        <li><strong>Four templates retain top-1 share above 35&nbsp;%</strong> on cholec after Phase&nbsp;2.6 iteration&nbsp;2 (<code>most_active_instrument</code>, <code>idle_duration</code>, <code>comparison</code>, <code>rel_change</code>). See FAQ&nbsp;#3.</li>
+        <li><strong>Bbox provenance asymmetry</strong>: CholecT50 boxes come from CholecTrack20; ProstaTD boxes are internally annotated pending the official ProstaTD bbox release.</li>
+        <li><strong>Refusal samples are capped at ~5&nbsp;%</strong>. Tuning beyond that range risks over-refusal on legitimate queries.</li>
+        <li><strong>Multi-instance disambiguation</strong> works end-to-end but has not yet been probed by an explicit "which-instance" template &mdash; planned for a follow-up release.</li>
+      </ul>
+    </div>
+  </section>
+  <!-- End limitations -->
+
+
+  <!-- Acknowledgements -->
+  <section class="section ack-section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Acknowledgements &amp; source datasets</h2>
+      <div class="content">
+        <p>
+          SurgSTU stands entirely on publicly available surgical annotation work. The cholecystectomy half builds on <strong>CholecT50</strong> (Nwoye&nbsp;et&nbsp;al.) for instrument-verb-target triplets and on <strong>CholecTrack20</strong> for instrument bounding boxes. The prostatectomy half builds on <strong>ProstaTD</strong> for instrument-verb-target annotations; ProstaTD bounding boxes are internally annotated by the authors pending an official ProstaTD bbox release.
+        </p>
+        <p>
+          This work was conducted at the Institute of Medical Technology and Intelligent Systems (IMETUM), Hamburg University of Technology. We thank the maintainers of CholecT50, CholecTrack20, and ProstaTD for releasing their annotations openly.
+        </p>
+      </div>
+    </div>
+  </section>
+  <!-- End acknowledgements -->
+
+
+  <!-- BibTeX citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" aria-label="Copy BibTeX to clipboard">
+          <span class="icon"><i class="fas fa-copy"></i></span>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <pre><code id="bibtex-code">@inproceedings{maack2026surgstu,
+    title={An Approach to Enriching Surgical Video Datasets for Fine-Grained Spatial-Temporal Understanding of Vision-Language Models},
+    author={Maack, Lennart and Schlaefer, Alexander},
+    booktitle={CVPR Workshop on Data Curation and Augmentation in Computer Vision (DataCV)},
+    year={2026}
+}</code></pre>
+    </div>
+  </section>
+  <!-- End BibTeX citation -->
+
+
+  <button class="scroll-to-top" onclick="scrollToTop()" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+
+  <footer class="footer">
     <div class="container">
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+              You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section> -->
-<!-- End youtube video -->
+  </footer>
 
-
-<!-- Video carousel -->
-<!-- <section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <video poster="" id="video1" autoplay controls muted loop height="100%">
-            <source src="static/videos/carousel1.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video2">
-          <video poster="" id="video2" autoplay controls muted loop height="100%">
-            <source src="static/videos/carousel2.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <video poster="" id="video3" autoplay controls muted loop height="100%">\
-            <source src="static/videos/carousel3.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
-<!-- End video carousel -->
-
-
-
-
-
-
-<!-- Paper poster -->
-<!-- <section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
-      </div>
-    </div>
-  </section> -->
-<!--End paper poster -->
-
-
-<!--BibTex citation -->
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <h2 class="title">BibTeX</h2>
-      <pre><code>BibTex will be made available soon</code></pre>
-    </div>
-</section>
-<!--End BibTex citation -->
-
-
-  <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
-
-    <!-- End of Statcounter Code -->
-
-  </body>
-  </html>
+</body>
+</html>
