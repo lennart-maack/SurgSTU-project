@@ -936,6 +936,36 @@ a.is-disabled:hover {
 }
 
 
+/* ----- Hero title + CVPR logo row ----- */
+.title-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.title-row .publication-title {
+  margin-bottom: 0 !important;
+}
+
+.cvpr-logo {
+  height: 3.5rem;
+  width: auto;
+  display: block;
+}
+
+@media screen and (max-width: 768px) {
+  .title-row {
+    gap: 1rem;
+  }
+  .cvpr-logo {
+    height: 2.75rem;
+  }
+}
+
+
 /* ----- Hero availability note ----- */
 .availability-note {
   margin-top: 1rem;

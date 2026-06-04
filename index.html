@@ -47,7 +47,10 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">SurgSTU</h1>
+            <div class="title-row">
+              <h1 class="title is-1 publication-title">SurgSTU</h1>
+              <img src="static/images/cvpr.png" alt="CVPR 2026, Denver, Colorado, June 3-7" class="cvpr-logo"/>
+            </div>
             <p class="subtitle is-4 publication-subtitle">An Approach to Enriching Surgical Video Datasets for Fine-Grained Spatial-Temporal Understanding of Vision-Language Models</p>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
@@ -242,7 +245,7 @@
       <img src="static/images/SurgSTU-Pipeline.png"
            alt="The SurgSTU-Pipeline: surgical videos plus metadata are converted to structured Event Tuples, continuity-filtered, and completed into spatial-temporal QA templates."
            class="pipeline-figure"/>
-      <p class="figure-caption">The SurgSTU-Pipeline turns surgical videos and their instrument-localization / action-triplet metadata into structured Event Tuples, applies spatial / temporal / semantic continuity filtering, and completes predefined QA templates &mdash; deterministically, with no LLM in the loop.</p>
+      <p class="figure-caption">The SurgSTU-Pipeline turns surgical videos and their instrument-localization / action-triplet metadata into structured Event Tuples, applies spatial / temporal / semantic continuity filtering, and completes predefined QA templates. Deterministically, with no LLM in the loop.</p>
     </div>
   </section>
   <!-- End pipeline figure -->
