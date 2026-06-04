@@ -941,8 +941,8 @@ a.is-disabled:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
+  gap: 1rem;
+  flex-wrap: nowrap;
   margin-bottom: 2rem;
 }
 
@@ -950,18 +950,30 @@ a.is-disabled:hover {
   margin-bottom: 0 !important;
 }
 
+.title-at {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  color: var(--text-secondary);
+  line-height: 1;
+}
+
 .cvpr-logo {
-  height: 3.5rem;
+  height: 2.6rem;
   width: auto;
   display: block;
 }
 
 @media screen and (max-width: 768px) {
   .title-row {
-    gap: 1rem;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .title-at {
+    font-size: 1.5rem;
   }
   .cvpr-logo {
-    height: 2.75rem;
+    height: 2rem;
   }
 }
 
