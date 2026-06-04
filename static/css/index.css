@@ -797,52 +797,6 @@ a.is-disabled:hover {
 }
 
 
-/* ----- Dataset at a glance ----- */
-.stats-section {
-  background: var(--background-secondary);
-  border-top: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
-}
-
-.stat-strip {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-.stat-card {
-  background: var(--background-primary);
-  border: 1px solid var(--border-color);
-  border-top: 3px solid var(--primary-color);
-  border-radius: var(--border-radius);
-  padding: 1.5rem 1rem;
-  text-align: center;
-  box-shadow: var(--shadow-sm);
-  transition: var(--transition);
-}
-
-.stat-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-.stat-num {
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--primary-color);
-  line-height: 1.1;
-  font-variant-numeric: tabular-nums;
-}
-
-.stat-caption {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  line-height: 1.3;
-}
-
-
 /* ----- Question type cards ----- */
 .qa-type-cards {
   margin-top: 1rem;
@@ -1031,22 +985,39 @@ a.is-disabled:hover {
   box-shadow: var(--shadow-lg);
 }
 
-.qa-card video {
-  display: block;
+/* ----- QA gallery card ----- */
+.qa-video-wrap {
+  position: relative;
   width: 100%;
-  height: auto;
+  padding-bottom: 56.25%;     /* 16:9 */
+  background: #000;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  overflow: hidden;
+}
+
+.qa-video-wrap video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: contain;
   background: #000;
 }
 
-.qa-card figcaption {
-  padding: 0.75rem 1rem;
+.qa-caption {
+  padding: 1rem 1.1rem 1.2rem;
+}
+
+.qa-meta {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   gap: 0.4rem;
+  align-items: center;
+  margin-bottom: 0.65rem;
   font-size: 0.9rem;
   color: var(--text-primary);
-  border-top: 1px solid var(--border-color);
 }
 
 .qa-subcat {
@@ -1063,59 +1034,26 @@ a.is-disabled:hover {
   letter-spacing: 0.04em;
 }
 
-.gallery-footer {
-  margin-top: 1.5rem;
-  text-align: center;
-  font-size: 0.85rem;
-  color: var(--text-light);
+.qa-question,
+.qa-answer,
+.qa-metric {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0.35rem 0;
+  color: var(--text-secondary);
 }
 
-.gallery-footer code {
-  font-size: 0.82rem;
-}
-
-
-/* ----- Pipeline at a glance ----- */
-.pipeline-strip {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-.pipeline-step {
-  background: var(--background-primary);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
-  padding: 1.25rem 1rem;
-  position: relative;
-  box-shadow: var(--shadow-sm);
-}
-
-.step-num {
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--primary-color);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.step-title {
-  margin: 0.4rem 0 0.6rem;
-  font-size: 1.05rem;
+.qa-label {
   font-weight: 700;
   color: var(--text-primary);
-}
-
-.step-desc {
+  margin-right: 0.35rem;
+  font-family: 'SF Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
   font-size: 0.85rem;
-  line-height: 1.5;
-  color: var(--text-secondary);
-  margin: 0;
 }
 
-.step-desc code {
-  font-size: 0.78rem;
+.qa-metric {
+  color: var(--text-light);
+  font-style: italic;
 }
 
 
@@ -1199,40 +1137,7 @@ a.is-disabled:hover {
 }
 
 
-/* ----- Limitations & acknowledgements ----- */
-.limitations-section {
-  background: var(--background-secondary);
-  border-top: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
-}
-
-.limitations-list {
-  list-style: none;
-  padding: 0;
-  margin-top: 1rem;
-}
-
-.limitations-list li {
-  position: relative;
-  padding: 0.6rem 0 0.6rem 1.75rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.limitations-list li:last-child {
-  border-bottom: none;
-}
-
-.limitations-list li::before {
-  content: "→";
-  position: absolute;
-  left: 0;
-  top: 0.6rem;
-  color: var(--primary-color);
-  font-weight: 700;
-}
-
+/* ----- Acknowledgements ----- */
 .ack-section .content {
   font-size: 1rem;
   line-height: 1.7;
@@ -1254,21 +1159,9 @@ a.is-disabled:hover {
 }
 
 @media screen and (max-width: 768px) {
-  .stat-strip {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .stat-num {
-    font-size: 1.6rem;
-  }
-
   .qa-grid {
     grid-template-columns: 1fr;
     max-width: 480px;
-  }
-
-  .pipeline-strip {
-    grid-template-columns: 1fr;
   }
 
   .qa-type-card {
@@ -1287,12 +1180,13 @@ a.is-disabled:hover {
 }
 
 @media screen and (max-width: 480px) {
-  .stat-strip {
-    grid-template-columns: 1fr;
+  .qa-caption {
+    padding: 0.75rem 0.9rem 1rem;
   }
 
-  .qa-card figcaption {
-    font-size: 0.82rem;
-    padding: 0.6rem 0.75rem;
+  .qa-question,
+  .qa-answer,
+  .qa-metric {
+    font-size: 0.85rem;
   }
 }

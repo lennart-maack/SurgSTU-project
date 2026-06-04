@@ -1,1 +1,5 @@
-static/videos/qa_examples/_raw/*
+# Intermediate verify_qa_overlay.py output pools. The six final overlays
+# (slot-named MP4s at the parent level) ship to GitHub Pages; the pools are
+# kept locally only.
+static/videos/qa_examples/_raw/
+static/videos/qa_examples/_raw_nopanels/

@@ -1,0 +1,20 @@
+- [ ]  The Abstract from the Paper should be displayed at the top
+- [ ]  Dataset at a glance rauslassen
+- [ ]  Neuen Icon setzen
+- [ ]  At the top, the Figure 1 or Figure 3 should be displayed
+- [ ]  Should be embedded videos and the Question and Answer should be below (not directly in the video)
+    - [ ]  The bboxes, timer etc. should be visible still in the video, just not the text
+- [ ]  The tasks should be named:
+    - [ ]  Spatial-Temporal Grounding
+    - [ ]  Spatial-Temporal Interaction Captioning
+    - [ ]  Multi Choice
+- [ ]  The full Question should be visible, not just a short version
+    - [ ]  For each question, it should also be visible what metric is used for evaluation
+- [ ]  Pipeline at a glance could be thrown out
+- [ ]  FAQ should be simpler
+    - [ ]  How did you ensure, that the question not only leads to grasper grasps gallbladder questions (highly skewed)
+    - [ ]  How did you ensure, that movements are long enough and displacements are far enough
+    - [ ]  Add more here
+- [ ]  Limitations & roadmap can be thrown out
+- [ ]  Link the Code Repo!
+- [ ]  Create a new Project Page for the TMI Publication that is anonym

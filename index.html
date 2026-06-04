@@ -19,7 +19,8 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <title>SurgSTU &mdash; Spatial-Temporal Understanding of Surgical Video</title>
-  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="static/images/favicon.svg">
+  <link rel="alternate icon" href="static/images/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   rel="stylesheet">
 
@@ -119,50 +120,18 @@
       <h2 class="title is-3">Abstract</h2>
       <div class="content has-text-justified">
         <p>
-          We introduce <strong>SurgSTU</strong>, a deterministic, template-driven pipeline that turns publicly available surgical-video annotations (CholecT50 + ProstaTD) into a large, fine-grained spatial-temporal question-answering dataset. The pipeline first normalizes every per-frame annotation into an <em>Event Tuple</em> &mdash; timestamp in seconds, instrument class, persistent instance id, normalized bounding box, verb, and target &mdash; then fills predefined task templates against continuity- and interestingness-filtered windows. A geometric instance-id tracker preserves same-class duplicates end-to-end; dataset-level rejection sampling damps modal-answer shortcuts on 14 categorical templates; explicit refusal samples discourage hallucination on absent instruments.
+          Surgical video understanding is a crucial prerequisite for advancing Computer-Assisted Surgery. While vision-language models (VLMs) have recently been applied to the surgical domain, existing surgical vision-language datasets lack in capturing and evaluating complex, interleaved spatial-temporal dynamics. Creating large scale datasets that accurately represent fine-grained spatial-temporal relationships in surgical videos is challenging due to costly manual annotations or error-prone generation using large language models.
         </p>
         <p>
-          Applied to ~6,700 clips across laparoscopic cholecystectomy and robot-assisted prostatectomy, SurgSTU yields <strong>179,912 QA conversations</strong> spanning five task families: spatial-temporal grounding, referred instrument-interaction captioning, spatial-temporal relation comparison, multi-choice (classes / existence / counting), and chain-of-thought interaction. Splits are leakage-safe at the procedure level. The pipeline is fully reproducible from a single random seed and does not depend on a language-model rewriter in any stage. We release the pipeline, the generated dataset, and a Qwen3-VL fine-tuning recipe as a downstream benchmark.
+          To address this gap, we introduce the SurgSTU-Pipeline, a deterministic generation pipeline featuring temporal and spatial continuity filtering to reliably create surgical datasets for fine-grained spatial-temporal multimodal understanding. Applying this pipeline to publicly available surgical datasets, we create the SurgSTU dataset, comprising 6711 video clips densely extended with 150k fine-grained spatial-temporal question-answer samples.
+        </p>
+        <p>
+          Our comprehensive evaluation shows that while state-of-the-art generalist VLMs struggle in zero-shot settings, their spatial-temporal capabilities can be improved through in-context learning. A fine-tuned VLM on the SurgSTU training dataset achieves highest performance among all spatial-temporal tasks, validating the dataset's efficacy to improve spatial-temporal understanding of VLMs in surgical videos.
         </p>
       </div>
     </div>
   </section>
   <!-- End abstract -->
-
-
-  <!-- Dataset at a glance -->
-  <section class="section stats-section">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3">Dataset at a glance</h2>
-      <div class="stat-strip">
-        <div class="stat-card">
-          <div class="stat-num">179,912</div>
-          <div class="stat-caption">QA conversations</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">~6,700</div>
-          <div class="stat-caption">distinct video clips</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">2</div>
-          <div class="stat-caption">surgical procedures</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">36</div>
-          <div class="stat-caption">active QA subcategories</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">5.0%</div>
-          <div class="stat-caption">calibrated refusal rate</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">seed 42</div>
-          <div class="stat-caption">byte-identical regeneration</div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End dataset at a glance -->
 
 
   <!-- Question type overview -->
@@ -175,11 +144,11 @@
 
       <div class="columns is-multiline qa-type-cards">
 
-        <!-- SpatioTemporal -->
+        <!-- Spatial-Temporal Grounding -->
         <div class="column is-one-third">
           <div class="qa-type-card">
             <div class="qa-type-header">
-              <span class="chip chip-spatio">SpatioTemporal</span>
+              <span class="chip chip-spatio">Spatial-Temporal Grounding</span>
               <span class="qa-type-count">11 subcategories</span>
             </div>
             <p class="qa-type-summary">Bbox grounding, trajectories, frame-region classification, reverse grounding, and explicit refusals.</p>
@@ -202,11 +171,11 @@
           </div>
         </div>
 
-        <!-- MultiChoice -->
+        <!-- Multi Choice -->
         <div class="column is-one-third">
           <div class="qa-type-card">
             <div class="qa-type-header">
-              <span class="chip chip-multichoice">MultiChoice</span>
+              <span class="chip chip-multichoice">Multi Choice</span>
               <span class="qa-type-count">7 subcategories</span>
             </div>
             <p class="qa-type-summary">Four-way and binary MCQs over instrument classes, presence, and counting &mdash; with distractors drawn from the instrument vocabulary.</p>
@@ -225,11 +194,11 @@
           </div>
         </div>
 
-        <!-- Interaction -->
+        <!-- Spatial-Temporal Interaction Captioning -->
         <div class="column is-one-third">
           <div class="qa-type-card">
             <div class="qa-type-header">
-              <span class="chip chip-interaction">Interaction</span>
+              <span class="chip chip-interaction">Spatial-Temporal Interaction Captioning</span>
               <span class="qa-type-count">18 subcategories</span>
             </div>
             <p class="qa-type-summary">What-is-doing-what at a point, plus temporal aggregation, ordering, and compositional whole-clip queries.</p>
@@ -280,232 +249,182 @@
     <div class="container is-max-widescreen">
       <h2 class="title is-3">QA samples in action</h2>
       <p class="section-lead">
-        Each clip shows a generated question, its time window, the bounding-box overlay (yellow-orange = question anchor, cyan = answer anchor), and the ground-truth answer panel. Rendered by <code>utils/data/verify_qa_overlay.py</code> with the project-page-tuned settings (<code>--wordmark --text-font-scale 0.7</code>). All eight clips were drawn from the SurgSTU corpus and reflect the post-Phase-2.6 dataset state.
+        Each example shows a clip with the bounding-box overlay drawn by <code>verify_qa_overlay.py</code> (yellow-orange = question anchor, cyan = answer anchor), followed by the full question, the ground-truth answer, and the metric used to score it.
       </p>
       <div class="qa-grid">
 
+        <!-- Slot 1: Spatial-Temporal Grounding · locate · easy · cholec -->
         <figure class="qa-card">
-          <video autoplay muted loop playsinline preload="metadata"
-                 src="static/videos/qa_examples/spatiotemporal_locate.mp4"></video>
-          <figcaption>
-            <span class="chip chip-spatio">SpatioTemporal</span>
-            <span class="qa-subcat">locate</span>
-            <span class="diff diff-easy">easy</span>
-            <span class="qa-proc">cholec</span>
+          <div class="qa-video-wrap">
+            <video autoplay muted loop playsinline preload="metadata"
+                   src="static/videos/qa_examples/spatiotemporal_locate.mp4"></video>
+          </div>
+          <figcaption class="qa-caption">
+            <div class="qa-meta">
+              <span class="chip chip-spatio">Spatial-Temporal Grounding</span>
+              <span class="qa-subcat">locate</span>
+              <span class="diff diff-easy">easy</span>
+              <span class="qa-proc">cholec</span>
+            </div>
+            <p class="qa-question"><span class="qa-label">Q:</span> Locate the surgical instrument <strong>hook</strong> at 18.40&nbsp;s and provide its bounding box coordinates <code>[x1, y1, x2, y2]</code> in normalized <code>[0, 1000]</code> format.</p>
+            <p class="qa-answer"><span class="qa-label">A:</span> The hook is located at <code>{"bbox_2d": [499.5, 131.6, 587.4, 311.2]}</code> (normalized <code>[0, 1000]</code> format).</p>
+            <p class="qa-metric"><span class="qa-label">Metric:</span> IoU + center distance</p>
           </figcaption>
         </figure>
 
+        <!-- Slot 2: Spatial-Temporal Grounding · locate_by_target · medium · prosta -->
         <figure class="qa-card">
-          <video autoplay muted loop playsinline preload="metadata"
-                 src="static/videos/qa_examples/spatiotemporal_locate_by_action.mp4"></video>
-          <figcaption>
-            <span class="chip chip-spatio">SpatioTemporal</span>
-            <span class="qa-subcat">locate_by_action</span>
-            <span class="diff diff-medium">medium</span>
-            <span class="qa-proc">prosta</span>
+          <div class="qa-video-wrap">
+            <video autoplay muted loop playsinline preload="metadata"
+                   src="static/videos/qa_examples/spatiotemporal_locate_by_target.mp4"></video>
+          </div>
+          <figcaption class="qa-caption">
+            <div class="qa-meta">
+              <span class="chip chip-spatio">Spatial-Temporal Grounding</span>
+              <span class="qa-subcat">locate_by_target</span>
+              <span class="diff diff-medium">medium</span>
+              <span class="qa-proc">prosta</span>
+            </div>
+            <p class="qa-question"><span class="qa-label">Q:</span> At 16.00&nbsp;s, locate the surgical instrument that is interacting with the <strong>fluid</strong>. Provide its bounding box <code>[x1, y1, x2, y2]</code> in normalized <code>[0, 1000]</code> format.</p>
+            <p class="qa-answer"><span class="qa-label">A:</span> The aspirator is interacting with the fluid and is located at <code>{"bbox_2d": [476.8, 510.9, 689.5, 1000.0]}</code> (normalized <code>[0, 1000]</code> format).</p>
+            <p class="qa-metric"><span class="qa-label">Metric:</span> IoU + center distance</p>
           </figcaption>
         </figure>
 
+        <!-- Slot 3: Multi Choice · Counting:concurrent · medium · cholec -->
         <figure class="qa-card">
-          <video autoplay muted loop playsinline preload="metadata"
-                 src="static/videos/qa_examples/multichoice_existence_global.mp4"></video>
-          <figcaption>
-            <span class="chip chip-multichoice">MultiChoice</span>
-            <span class="qa-subcat">Existence:global</span>
-            <span class="diff diff-easy">easy</span>
-            <span class="qa-proc">prosta</span>
+          <div class="qa-video-wrap">
+            <video autoplay muted loop playsinline preload="metadata"
+                   src="static/videos/qa_examples/multichoice_counting_concurrent.mp4"></video>
+          </div>
+          <figcaption class="qa-caption">
+            <div class="qa-meta">
+              <span class="chip chip-multichoice">Multi Choice</span>
+              <span class="qa-subcat">Counting:concurrent</span>
+              <span class="diff diff-medium">medium</span>
+              <span class="qa-proc">cholec</span>
+            </div>
+            <p class="qa-question"><span class="qa-label">Q:</span> Identify the maximum number of instruments visible simultaneously during the transition between 8.93&nbsp;s and 17.93&nbsp;s. <em>Options:</em> A) 0 &nbsp; B) 2 &nbsp; C) 4 &nbsp; D) 1</p>
+            <p class="qa-answer"><span class="qa-label">A:</span> Answer: <strong>D) 1</strong></p>
+            <p class="qa-metric"><span class="qa-label">Metric:</span> Exact-match accuracy</p>
           </figcaption>
         </figure>
 
+        <!-- Slot 4: Multi Choice · Existence:global · easy · prosta -->
         <figure class="qa-card">
-          <video autoplay muted loop playsinline preload="metadata"
-                 src="static/videos/qa_examples/interaction_next_action.mp4"></video>
-          <figcaption>
-            <span class="chip chip-interaction">Interaction</span>
-            <span class="qa-subcat">next_action</span>
-            <span class="diff diff-hard">hard</span>
-            <span class="qa-proc">prosta</span>
+          <div class="qa-video-wrap">
+            <video autoplay muted loop playsinline preload="metadata"
+                   src="static/videos/qa_examples/multichoice_existence_global.mp4"></video>
+          </div>
+          <figcaption class="qa-caption">
+            <div class="qa-meta">
+              <span class="chip chip-multichoice">Multi Choice</span>
+              <span class="qa-subcat">Existence:global</span>
+              <span class="diff diff-easy">easy</span>
+              <span class="qa-proc">prosta</span>
+            </div>
+            <p class="qa-question"><span class="qa-label">Q:</span> Does the surgical instrument <strong>grasper</strong> appear at any point throughout the duration of this footage? <em>Options:</em> A) Yes &nbsp; B) No</p>
+            <p class="qa-answer"><span class="qa-label">A:</span> Answer: <strong>B) No</strong></p>
+            <p class="qa-metric"><span class="qa-label">Metric:</span> Exact-match accuracy</p>
           </figcaption>
         </figure>
 
+        <!-- Slot 5: Spatial-Temporal Interaction Captioning · target_interaction · medium · cholec -->
         <figure class="qa-card">
-          <video autoplay muted loop playsinline preload="metadata"
-                 src="static/videos/qa_examples/multichoice_counting_concurrent.mp4"></video>
-          <figcaption>
-            <span class="chip chip-multichoice">MultiChoice</span>
-            <span class="qa-subcat">Counting:concurrent</span>
-            <span class="diff diff-medium">medium</span>
-            <span class="qa-proc">cholec</span>
+          <div class="qa-video-wrap">
+            <video autoplay muted loop playsinline preload="metadata"
+                   src="static/videos/qa_examples/interaction_target_interaction.mp4"></video>
+          </div>
+          <figcaption class="qa-caption">
+            <div class="qa-meta">
+              <span class="chip chip-interaction">Spatial-Temporal Interaction Captioning</span>
+              <span class="qa-subcat">target_interaction</span>
+              <span class="diff diff-medium">medium</span>
+              <span class="qa-proc">cholec</span>
+            </div>
+            <p class="qa-question"><span class="qa-label">Q:</span> Identify the specific target that the surgical instrument <strong>hook</strong> is engaged with between 0.00&nbsp;s and 24.93&nbsp;s, basing your conclusion solely on the instrument and the verb/action performed.</p>
+            <p class="qa-answer"><span class="qa-label">A:</span> The hook is interacting with <strong>no specific target</strong>.</p>
+            <p class="qa-metric"><span class="qa-label">Metric:</span> Exact-match (target label)</p>
           </figcaption>
         </figure>
 
+        <!-- Slot 6: Spatial-Temporal Interaction Captioning · comparison · hard · prosta -->
         <figure class="qa-card">
-          <video autoplay muted loop playsinline preload="metadata"
-                 src="static/videos/qa_examples/interaction_refusal_no_specific_action.mp4"></video>
-          <figcaption>
-            <span class="chip chip-interaction">Interaction</span>
-            <span class="qa-subcat">refusal_no_specific_action</span>
-            <span class="diff diff-easy">easy</span>
-            <span class="qa-proc">prosta</span>
+          <div class="qa-video-wrap">
+            <video autoplay muted loop playsinline preload="metadata"
+                   src="static/videos/qa_examples/interaction_comparison.mp4"></video>
+          </div>
+          <figcaption class="qa-caption">
+            <div class="qa-meta">
+              <span class="chip chip-interaction">Spatial-Temporal Interaction Captioning</span>
+              <span class="qa-subcat">comparison</span>
+              <span class="diff diff-hard">hard</span>
+              <span class="qa-proc">prosta</span>
+            </div>
+            <p class="qa-question"><span class="qa-label">Q:</span> Between 26.07&nbsp;s and 29.57&nbsp;s, identify the target of the surgical instrument <strong>clip applier</strong> and the target of the surgical instrument <strong>forceps</strong>, and then state whether the two instruments are interacting with the same target.</p>
+            <p class="qa-answer"><span class="qa-label">A:</span> Clip applier is interacting with <strong>prostate</strong>; forceps is interacting with <strong>prostate</strong>. Verdict: <strong>Yes</strong> &mdash; both instruments share the target prostate.</p>
+            <p class="qa-metric"><span class="qa-label">Metric:</span> Binary same-target accuracy + set F1 over target pair</p>
           </figcaption>
         </figure>
 
       </div>
-      <p class="gallery-footer">
-        Regenerate the gallery with <code>bash SurgSTU-project/static/videos/_generate.sh</code> after any Stage&nbsp;2 re-run.
-      </p>
     </div>
   </section>
   <!-- End QA video gallery -->
 
 
-  <!-- Pipeline at a glance -->
-  <section class="section pipeline-section">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3">Pipeline at a glance</h2>
-      <div class="pipeline-strip">
-        <div class="pipeline-step">
-          <div class="step-num">Stage&nbsp;1</div>
-          <h4 class="step-title">Event Tuples</h4>
-          <p class="step-desc">Per-frame JSON annotations are normalized into <code>(t_sec, c_i, inst_id, x1, x2, y1, y2, c_v, c_t)</code> rows. A geometric instance-id tracker handles same-class duplicates.</p>
-        </div>
-        <div class="pipeline-step">
-          <div class="step-num">Stage&nbsp;2</div>
-          <h4 class="step-title">Template-driven QA</h4>
-          <p class="step-desc">Three deterministic generators (<code>SpatioTemporal</code>, <code>MultiChoice</code>, <code>Interaction</code>) fill QA templates against continuity-filtered windows. No LLM in the loop.</p>
-        </div>
-        <div class="pipeline-step">
-          <div class="step-num">Stage&nbsp;3</div>
-          <h4 class="step-title">Bbox formatting</h4>
-          <p class="step-desc">Emitted bboxes are converted to Qwen-style <code>{"bbox_2d": [x1, y1, x2, y2]}</code> in normalized <code>[0, 1000]</code> space.</p>
-        </div>
-        <div class="pipeline-step">
-          <div class="step-num">Stage&nbsp;4</div>
-          <h4 class="step-title">Image-frame QA</h4>
-          <p class="step-desc">A complementary single-frame stream (Caption / EasyDescription / SpatialAction) is sampled at a configurable FPS.</p>
-        </div>
-        <div class="pipeline-step">
-          <div class="step-num">Stage&nbsp;5</div>
-          <h4 class="step-title">Leakage-safe splits</h4>
-          <p class="step-desc">A single procedure-to-split map is applied to both modalities so no procedure leaks between train and test.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End pipeline at a glance -->
-
-
   <!-- FAQ -->
   <section class="section faq-section">
     <div class="container is-max-desktop">
-      <h2 class="title is-3">Design choices &mdash; FAQ</h2>
-      <p class="section-lead">
-        Reviewer-style questions about data quality, residual skews, and reproducibility. We surface honest numbers rather than over-prune the corpus.
-      </p>
+      <h2 class="title is-3">FAQ</h2>
 
       <details class="faq-item">
-        <summary>The pipeline is fully template-driven &mdash; no LLM augmentation?</summary>
+        <summary>How did you ensure the dataset isn&rsquo;t dominated by &ldquo;grasper grasps gallbladder&rdquo; samples?</summary>
         <div class="faq-answer">
-          <p>Correct. Every QA is produced by a small set of deterministic Python templates that read normalized event tuples and fill them in. No LLM rewrites or paraphrases the questions. This makes the dataset reproducible from a single seed (default 42) and decouples its quality from any third-party model.</p>
+          <p>The pipeline applies dataset-level rejection sampling on 14 categorical templates using per-procedure, per-correct-answer accept maps. The orchestrator probabilistically drops samples whose correct answer is over-represented for the procedure. Concrete impact &mdash; the modal answer share on <code>reverse_target</code> dropped from 91&nbsp;% to 51&nbsp;%, on <code>idle_duration</code> from 93&nbsp;% to 49&nbsp;%, and similar reductions elsewhere.</p>
+          <p>A handful of templates still retain a top-1 share above 35&nbsp;% (<code>comparison</code> <code>Yes</code> at 52&nbsp;%, <code>idle_duration</code> <code>[50%+]</code> at 45&nbsp;%, <code>rel_change</code> <code>maintained</code> at 46&nbsp;%, <code>most_active_instrument</code> <code>grasper</code> at 41&nbsp;%); we surface these openly rather than over-prune the corpus.</p>
         </div>
       </details>
 
       <details class="faq-item">
-        <summary>How do you defend against the model learning the modal answer instead of looking at the video?</summary>
+        <summary>How did you ensure that motion and displacement are large enough to be evaluable?</summary>
         <div class="faq-answer">
-          <p>Phase 2.5 introduced per-procedure, per-correct-answer rejection sampling for 14 categorical templates (<code>MOST_ACTIVE_ACCEPT</code>, <code>IDLE_DURATION_ACCEPT</code>, etc.). The orchestrator probabilistically drops samples whose correct answer is over-represented for that procedure. Phase 2.6 re-tuned these maps after gates were tightened. Top-1 share dropped substantially &mdash; e.g. <code>reverse_target</code> 91&nbsp;% &rarr; 51&nbsp;%, <code>idle_duration</code> 93&nbsp;% &rarr; 49&nbsp;%.</p>
+          <p>Every motion-sensitive template has an interestingness gate. Trajectory requires an x-range <em>or</em> y-range above <code>MIN_TRAJECTORY_RANGE = 0.20</code> (normalized). Relative-change requires <code>|&Delta;distance| &ge; 0.30</code>. Relative-position requires <code>|dx|</code> <em>and</em> <code>|dy|</code> both above <code>0.18</code>. Time-window templates need &ge; 2&nbsp;s of motion.</p>
+          <p>Failed gates re-roll; samples that consistently fail are dropped silently. Phase&nbsp;2.6 also tightened the spatial-continuity gate to <strong>0.6 normalized-diagonal/sec</strong> and the temporal-gap gate to <strong>0.7&nbsp;s</strong>, so trajectories built from bbox jitter are filtered out before they reach any template.</p>
         </div>
       </details>
 
       <details class="faq-item">
-        <summary>Are any templates still skewed after rejection sampling? Be specific.</summary>
+        <summary>No LLM in the loop &mdash; really?</summary>
         <div class="faq-answer">
-          <p>Yes &mdash; we surface them openly rather than over-prune the corpus. After Phase 2.6 iteration&nbsp;2:</p>
-          <ul>
-            <li><code>most_active_instrument</code> (cholec) sits at <strong>41&nbsp;%</strong> on <code>grasper</code></li>
-            <li><code>idle_duration</code> (cholec) sits at <strong>45&nbsp;%</strong> on the <code>[50%+]</code> bucket</li>
-            <li><code>comparison</code> (cholec) sits at <strong>52&nbsp;%</strong> on <code>Yes</code></li>
-            <li><code>rel_change</code> (cholec) sits at <strong>46&nbsp;%</strong> on <code>maintained</code></li>
-          </ul>
-          <p>Pushing them further would either cost additional dataset shrinkage (the Phase&nbsp;2.6 retune already cost 11.3&nbsp;%) or require new accept maps for templates not yet covered. We chose visibility over aggressive pruning.</p>
+          <p>Yes. Every question and answer is filled from a deterministic Python template against normalized event tuples. No model paraphrases the questions and no model judges the answers. Re-running with the default random seed (42) produces byte-identical output.</p>
         </div>
       </details>
 
       <details class="faq-item">
-        <summary>Where do the bounding boxes come from? Are CholecT50 and ProstaTD annotated the same way?</summary>
+        <summary>Where do the bounding boxes come from? Same provenance for both procedures?</summary>
         <div class="faq-answer">
-          <p>No &mdash; and this matters. CholecT50 bboxes are pulled from CholecTrack20, an open companion release. ProstaTD bboxes are internally annotated pending an official bbox release for ProstaTD. The pipeline normalizes both to the same <code>(x1, x2, y1, y2)</code> order against the actual video stream's dimensions, but downstream consumers should be aware of the provenance asymmetry.</p>
+          <p>No &mdash; and this matters. CholecT50 boxes come from CholecTrack20. ProstaTD boxes are internally annotated by the authors pending the official ProstaTD bbox release. Both are normalized to the same <code>(x1, x2, y1, y2)</code> order against each video&rsquo;s true frame dimensions.</p>
         </div>
       </details>
 
       <details class="faq-item">
-        <summary>Why are the continuity gates so tight (0.6 normalized units/sec, 0.7&nbsp;s gap)?</summary>
+        <summary>How does the train / val / test split avoid leakage?</summary>
         <div class="faq-answer">
-          <p>Phase&nbsp;2.6 tightened the spatial-continuity gate from 1.0 to 0.6 normalized-diagonal/sec and the temporal-gap gate from 1.0&nbsp;s to 0.7&nbsp;s. The earlier values let bbox-jitter tracks through whose centroid moved unrealistically between frames. Tightening cost about 11.3&nbsp;% of the corpus but produced cleaner trajectories &mdash; the <code>rel_change</code> template required the tightening before the "approximately maintained" class became meaningful (the <code>REL_CHANGE_MIN_DELTA</code> threshold also went 0.05 &rarr; 0.20).</p>
+          <p>A single procedure-to-split map is built once and applied to both video and image modalities, so a <code>cholec_42</code> clip is in the same split everywhere. An <code>assert_no_overlap</code> check runs before any file is written.</p>
         </div>
       </details>
 
       <details class="faq-item">
-        <summary>There are ~5&nbsp;% refusal samples in the dataset &mdash; why include them, and why that fraction?</summary>
+        <summary>Are there refusal samples? Why?</summary>
         <div class="faq-answer">
-          <p>Two refusal templates are wired in: <code>refusal_absent_instrument</code> (asked about an instrument that never appears in the clip) and <code>refusal_no_specific_action</code> (asked about a verb when the instrument is idling). Without them, a model learns to always produce a confident bounding box or verb. The 5&nbsp;% target is a heuristic cap; higher rates push models toward over-refusal on legitimate queries.</p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Why was the velocity-estimation subcategory removed?</summary>
-        <div class="faq-answer">
-          <p>Bbox-centroid velocity in raw camera coordinates cannot separate genuine instrument motion from camera ego-motion &mdash; pan, zoom, and rotation are common in surgical video and bias the centroid. Rather than ship a metric the model could be right or wrong for the wrong reason, we removed <code>gen_velocity</code> entirely. The <code>trajectory</code> subcategory remains because it grounds in absolute extreme positions rather than rates.</p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Is the dataset reproducible end-to-end?</summary>
-        <div class="faq-answer">
-          <p>Yes. All randomness is seeded at the top of Stage&nbsp;2 (<code>random.seed(RANDOM_SEED)</code>, default 42). Stage&nbsp;4 takes <code>--seed</code> explicitly. Stage&nbsp;5 sorts procedure IDs before shuffling with <code>np.random.default_rng(seed)</code> so splits are machine-independent. Re-running with the same seed produces byte-identical output.</p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>How are two same-class instruments (e.g. two graspers) disambiguated?</summary>
-        <div class="faq-answer">
-          <p>Every event tuple carries an <code>inst_id</code> alongside the class id. Stage&nbsp;1 runs a geometric tracker (<code>_assign_instance_ids_for_class</code>) that propagates persistent instance ids via greedy nearest-centroid assignment, with a 1.0&nbsp;s re-id window for brief occlusions. Generators key all tracks on <code>(c_i, inst_id)</code>, and answer text gets an <code>(instance&nbsp;1)</code> suffix only when two same-class instruments coexist &mdash; single-instance clips read identically to the pre-instance schema.</p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>How does the train / val / test split prevent leakage?</summary>
-        <div class="faq-answer">
-          <p>A single procedure-to-split map is built once (Stage&nbsp;5) and applied to both modalities. So a <code>cholec_42</code> clip lands in the same split for video and image streams, and an <code>assert_no_overlap</code> check runs before any file is written. Procedure IDs are normalized via regex (<code>cholec_\d+</code> / <code>prostaTD_\w+</code>) so different naming conventions collapse to the same key.</p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Where do the actual question texts live? Can I read them?</summary>
-        <div class="faq-answer">
-          <p>The question wording for every active subcategory is in <code>QA_TEMPLATE_INVENTORY_AND_BRAINSTORM.md</code> (Part&nbsp;I) with the answer schema, gate constants, and an assessment per template. The runtime templates are hardcoded inline in <code>utils/data/create_surgSTU_qa_dataset.py</code>; the standalone <code>utils/data/qa_templates.py</code> file mirrors them as documentation but is <strong>not</strong> used at runtime &mdash; editing it alone has no effect on generated data.</p>
+          <p>Yes &mdash; about 5&nbsp;% of the corpus. Two refusal templates: <code>refusal_absent_instrument</code> (asked about an instrument that never appears in the clip) and <code>refusal_no_specific_action</code> (asked about a verb when the instrument is idling). Without them a model learns to always produce a confident bbox or verb. Higher fractions push models toward over-refusal on legitimate queries.</p>
         </div>
       </details>
 
     </div>
   </section>
   <!-- End FAQ -->
-
-
-  <!-- Limitations & roadmap -->
-  <section class="section limitations-section">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3">Limitations &amp; roadmap</h2>
-      <ul class="limitations-list">
-        <li><strong>Workflow / phase-step queries</strong> are out of scope for this release because Stage&nbsp;1 currently discards the phase and step columns.</li>
-        <li><strong>Four templates retain top-1 share above 35&nbsp;%</strong> on cholec after Phase&nbsp;2.6 iteration&nbsp;2 (<code>most_active_instrument</code>, <code>idle_duration</code>, <code>comparison</code>, <code>rel_change</code>). See FAQ&nbsp;#3.</li>
-        <li><strong>Bbox provenance asymmetry</strong>: CholecT50 boxes come from CholecTrack20; ProstaTD boxes are internally annotated pending the official ProstaTD bbox release.</li>
-        <li><strong>Refusal samples are capped at ~5&nbsp;%</strong>. Tuning beyond that range risks over-refusal on legitimate queries.</li>
-        <li><strong>Multi-instance disambiguation</strong> works end-to-end but has not yet been probed by an explicit "which-instance" template &mdash; planned for a follow-up release.</li>
-      </ul>
-    </div>
-  </section>
-  <!-- End limitations -->
 
 
   <!-- Acknowledgements -->
