@@ -1,20 +1,28 @@
-- [ ]  The Abstract from the Paper should be displayed at the top
-- [ ]  Dataset at a glance rauslassen
-- [ ]  Neuen Icon setzen
-- [ ]  At the top, the Figure 1 or Figure 3 should be displayed
-- [ ]  Should be embedded videos and the Question and Answer should be below (not directly in the video)
-    - [ ]  The bboxes, timer etc. should be visible still in the video, just not the text
-- [ ]  The tasks should be named:
-    - [ ]  Spatial-Temporal Grounding
-    - [ ]  Spatial-Temporal Interaction Captioning
-    - [ ]  Multi Choice
-- [ ]  The full Question should be visible, not just a short version
-    - [ ]  For each question, it should also be visible what metric is used for evaluation
-- [ ]  Pipeline at a glance could be thrown out
-- [ ]  FAQ should be simpler
-    - [ ]  How did you ensure, that the question not only leads to grasper grasps gallbladder questions (highly skewed)
-    - [ ]  How did you ensure, that movements are long enough and displacements are far enough
-    - [ ]  Add more here
-- [ ]  Limitations & roadmap can be thrown out
-- [ ]  Link the Code Repo!
-- [ ]  Create a new Project Page for the TMI Publication that is anonym
+- Remove the easy, medium, hard tags
+- Remove the Text below Question Types
+- Rename QA samples in action to Dataset Examples and remove the text below it. Move the whole section upwards below the code and paper icons
+- Revise the Videos and create new videos using the metadata for the question types: 1. Spatial-Temporal Identify ; 2. Interaction Reverse Target, 3. SPatial-Temporal Trajectory, 4. Interaction Next Action, 5. Spatial-Temporal Relative Change, 6. Multi Choice Counting:concurrent
+- Move the Abstract below the Dataset Examples and put the Abstract Text into Block Sentence
+- Integrate the Figure from the Poster below the Abstract
+- Put the Question Types below the Figures
+- Remove the arxiv link (and icon) and only forward the paper icon to: https://openaccess.thecvf.com/content/CVPR2026W/DataCV/html/Maack_An_Approach_to_Enriching_Surgical_Video_Datasets_for_Fine-Grained_Spatial-Temporal_CVPRW_2026_paper.html
+- Remove the dataset Icon and only say below the Icons - “The dataset and benchmark will be made available with the upcoming Journal publication”
+    
+    
+- USe this Bibtex:
+
+```
+@inproceedings{maack2026approach,
+  title={An Approach to Enriching Surgical Video Datasets for Fine-Grained Spatial-Temporal Understanding of Vision-Language Models},
+  author={Maack, Lennart and Schlaefer, Alexander},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={2945--2954},
+  year={2026}
+}
+```
+
+- Remove the FAQ Section completly
+- Rewrite the Acknowledgements section (remove the **& source datasets)** to:
+
+> SurgSTU currently stands on publicly available surgical datasets. The cholecystectomy half builds on **CholecT50** (Nwoye et al.) for instrument-verb-target triplets and on **CholecTrack20** (Nwoye et al.) for instrument bounding boxes. The prostatectomy half builds on **ProstaTD** for instrument-verb-target annotations; ProstaTD bounding boxes are internally annotated by the authors.
+>

@@ -2,19 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="SurgSTU is a deterministic, template-driven pipeline that turns publicly available surgical-video annotations (CholecT50 + ProstaTD) into a large, fine-grained spatial-temporal question-answering dataset of 179,912 conversations.">
+  <meta name="description" content="SurgSTU is a deterministic, template-driven pipeline that turns publicly available surgical-video annotations (CholecT50 + ProstaTD) into a large, fine-grained spatial-temporal question-answering dataset.">
   <meta name="keywords" content="surgical video, vision-language models, spatial-temporal QA, CholecT50, ProstaTD, instrument grounding, dataset, CVPR 2026, DataCV">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta property="og:title" content="SurgSTU: A Deterministic Pipeline for Spatial-Temporal Surgical QA"/>
-  <meta property="og:description" content="A template-driven pipeline that turns CholecT50 and ProstaTD annotations into 179,912 fine-grained spatial-temporal QA conversations across 36 subcategories."/>
+  <meta property="og:description" content="A template-driven pipeline that turns CholecT50 and ProstaTD annotations into fine-grained spatial-temporal QA conversations."/>
   <meta property="og:url" content=""/>
   <meta property="og:image" content="static/images/carousel1.jpg"/>
   <meta property="og:image:width" content="1200"/>
   <meta property="og:image:height" content="630"/>
 
   <meta name="twitter:title" content="SurgSTU: A Deterministic Pipeline for Spatial-Temporal Surgical QA">
-  <meta name="twitter:description" content="A template-driven pipeline that turns CholecT50 and ProstaTD annotations into 179,912 fine-grained spatial-temporal QA conversations across 36 subcategories.">
+  <meta name="twitter:description" content="A template-driven pipeline that turns CholecT50 and ProstaTD annotations into fine-grained spatial-temporal QA conversations.">
   <meta name="twitter:image" content="static/images/carousel1.jpg">
   <meta name="twitter:card" content="summary_large_image">
 
@@ -67,51 +67,153 @@
 
             <div class="column has-text-centered">
               <div class="publication-links">
-                <!-- Datasets (disabled until camera-ready) -->
+                <!-- Paper PDF (CVF open access) -->
                 <span class="link-block">
-                  <a class="external-link button is-normal is-rounded is-dark is-disabled"
-                     aria-disabled="true" tabindex="-1"
-                     title="Coming with the camera-ready release">
-                    <span class="icon"><i class="fas fa-database"></i></span>
-                    <span>Datasets</span>
-                  </a>
-                </span>
-
-                <!-- Code (disabled until camera-ready) -->
-                <span class="link-block">
-                  <a class="external-link button is-normal is-rounded is-dark is-disabled"
-                     aria-disabled="true" tabindex="-1"
-                     title="Coming with the camera-ready release">
-                    <span class="icon"><i class="fab fa-github"></i></span>
-                    <span>Code</span>
-                  </a>
-                </span>
-
-                <!-- Paper PDF (disabled until camera-ready) -->
-                <span class="link-block">
-                  <a class="external-link button is-normal is-rounded is-dark is-disabled"
-                     aria-disabled="true" tabindex="-1"
-                     title="Coming with the camera-ready release">
+                  <a href="https://openaccess.thecvf.com/content/CVPR2026W/DataCV/html/Maack_An_Approach_to_Enriching_Surgical_Video_Datasets_for_Fine-Grained_Spatial-Temporal_CVPRW_2026_paper.html"
+                     target="_blank"
+                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon"><i class="fas fa-file-pdf"></i></span>
                     <span>Paper</span>
                   </a>
                 </span>
 
-                <!-- arXiv (active) -->
+                <!-- Code (disabled until release) -->
                 <span class="link-block">
-                  <a href="https://arxiv.org/abs/2604.00784" target="_blank"
-                     class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon"><i class="ai ai-arxiv"></i></span>
-                    <span>arXiv</span>
+                  <a class="external-link button is-normal is-rounded is-dark is-disabled"
+                     aria-disabled="true" tabindex="-1"
+                     title="Coming soon">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>Code</span>
                   </a>
                 </span>
               </div>
+              <p class="availability-note">The dataset and benchmark will be made available with the upcoming Journal publication.</p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+
+  <!-- Dataset Examples -->
+  <section class="section gallery-section">
+    <div class="container is-max-widescreen">
+      <h2 class="title is-3">Dataset Examples</h2>
+      <div class="qa-grid">
+
+        <!-- Slot 1: Spatial-Temporal Grounding · Identify by BBox -->
+        <figure class="qa-card">
+          <div class="qa-video-wrap">
+            <video autoplay muted loop playsinline preload="metadata"
+                   src="static/videos/qa_examples/spatiotemporal_identify_bbox.mp4"></video>
+          </div>
+          <figcaption class="qa-caption">
+            <div class="qa-meta">
+              <span class="chip chip-spatio">Spatial-Temporal Grounding</span>
+              <span class="qa-subcat">Identify by BBox</span>
+              <span class="qa-proc">prosta</span>
+            </div>
+            <p class="qa-question"><span class="qa-label">Q:</span> At 21.80&nbsp;s, which surgical instrument is positioned within the bounding box <code>{"bbox_2d": [675.8, 382.0, 980.5, 1000.0]}</code> in normalized <code>[0, 1000]</code> format?</p>
+            <p class="qa-answer"><span class="qa-label">A:</span> The instrument located at these coordinates is the <strong>aspirator</strong>.</p>
+            <p class="qa-metric"><span class="qa-label">Metric:</span> Exact-match (instrument name)</p>
+          </figcaption>
+        </figure>
+
+        <!-- Slot 2: Spatial-Temporal Interaction Captioning · Reverse Target -->
+        <figure class="qa-card">
+          <div class="qa-video-wrap">
+            <video autoplay muted loop playsinline preload="metadata"
+                   src="static/videos/qa_examples/interaction_reverse_target.mp4"></video>
+          </div>
+          <figcaption class="qa-caption">
+            <div class="qa-meta">
+              <span class="chip chip-interaction">Spatial-Temporal Interaction Captioning</span>
+              <span class="qa-subcat">Reverse Target</span>
+              <span class="qa-proc">prosta</span>
+            </div>
+            <p class="qa-question"><span class="qa-label">Q:</span> Are there any instruments actively interacting with the target <strong>bladder</strong> between 15.03&nbsp;s and 17.03&nbsp;s? If so, which ones?</p>
+            <p class="qa-answer"><span class="qa-label">A:</span> Yes, the following instruments are interacting with bladder: <strong>forceps, scissors</strong>.</p>
+            <p class="qa-metric"><span class="qa-label">Metric:</span> Set F1 (instrument set)</p>
+          </figcaption>
+        </figure>
+
+        <!-- Slot 3: Spatial-Temporal Grounding · Trajectory -->
+        <figure class="qa-card">
+          <div class="qa-video-wrap">
+            <video autoplay muted loop playsinline preload="metadata"
+                   src="static/videos/qa_examples/spatiotemporal_trajectory.mp4"></video>
+          </div>
+          <figcaption class="qa-caption">
+            <div class="qa-meta">
+              <span class="chip chip-spatio">Spatial-Temporal Grounding</span>
+              <span class="qa-subcat">Trajectory</span>
+              <span class="qa-proc">prosta</span>
+            </div>
+            <p class="qa-question"><span class="qa-label">Q:</span> Trace the trajectory of the surgical instrument <strong>scissors</strong> between 7.73&nbsp;s and 15.83&nbsp;s and provide the spatiotemporal coordinates for its most extreme top and bottom positions in normalized <code>[0, 1000]</code> format.</p>
+            <p class="qa-answer"><span class="qa-label">A:</span> Extreme Top: <code>{"bbox_2d": [581.0, 251.2, 909.2, 515.6]}</code> at t=7.73&nbsp;s; Extreme Bottom: <code>{"bbox_2d": [518.5, 460.2, 735.3, 720.3]}</code> at t=15.83&nbsp;s.</p>
+            <p class="qa-metric"><span class="qa-label">Metric:</span> Spatiotemporal error + center distance</p>
+          </figcaption>
+        </figure>
+
+        <!-- Slot 4: Spatial-Temporal Interaction Captioning · Next Action + Target -->
+        <figure class="qa-card">
+          <div class="qa-video-wrap">
+            <video autoplay muted loop playsinline preload="metadata"
+                   src="static/videos/qa_examples/interaction_next_action.mp4"></video>
+          </div>
+          <figcaption class="qa-caption">
+            <div class="qa-meta">
+              <span class="chip chip-interaction">Spatial-Temporal Interaction Captioning</span>
+              <span class="qa-subcat">Next Action + Target</span>
+              <span class="qa-proc">prosta</span>
+            </div>
+            <p class="qa-question"><span class="qa-label">Q:</span> Following the completion of <code>idling</code> by the <strong>forceps</strong>, identify both the subsequent verb AND the subsequent target.</p>
+            <p class="qa-answer"><span class="qa-label">A:</span> After <code>idling</code>, the forceps transitions to <strong>retract</strong> on the <strong>bladder</strong>.</p>
+            <p class="qa-metric"><span class="qa-label">Metric:</span> Exact-match (verb + target)</p>
+          </figcaption>
+        </figure>
+
+        <!-- Slot 5: Spatial-Temporal Grounding · Relative Change -->
+        <figure class="qa-card">
+          <div class="qa-video-wrap">
+            <video autoplay muted loop playsinline preload="metadata"
+                   src="static/videos/qa_examples/spatiotemporal_rel_change.mp4"></video>
+          </div>
+          <figcaption class="qa-caption">
+            <div class="qa-meta">
+              <span class="chip chip-spatio">Spatial-Temporal Grounding</span>
+              <span class="qa-subcat">Relative Change</span>
+              <span class="qa-proc">prosta</span>
+            </div>
+            <p class="qa-question"><span class="qa-label">Q:</span> Between 21.20&nbsp;s and 25.73&nbsp;s, what is the observed change in the spatial relationship between the <strong>grasper</strong> and the <strong>aspirator</strong>?</p>
+            <p class="qa-answer"><span class="qa-label">A:</span> The grasper approximately <strong>maintained</strong> its distance from the aspirator (distance change 0.02; below the 0.30 significance threshold).</p>
+            <p class="qa-metric"><span class="qa-label">Metric:</span> Relation accuracy + numeric relative error</p>
+          </figcaption>
+        </figure>
+
+        <!-- Slot 6: Multi Choice · Counting (concurrent) -->
+        <figure class="qa-card">
+          <div class="qa-video-wrap">
+            <video autoplay muted loop playsinline preload="metadata"
+                   src="static/videos/qa_examples/multichoice_counting_concurrent.mp4"></video>
+          </div>
+          <figcaption class="qa-caption">
+            <div class="qa-meta">
+              <span class="chip chip-multichoice">Multi Choice</span>
+              <span class="qa-subcat">Counting (concurrent)</span>
+              <span class="qa-proc">prosta</span>
+            </div>
+            <p class="qa-question"><span class="qa-label">Q:</span> What is the highest concurrent tool count observed throughout the segment spanning from 20.63&nbsp;s to 27.17&nbsp;s? <em>Options:</em> A) 4 &nbsp; B) 3 &nbsp; C) 5 &nbsp; D) 0</p>
+            <p class="qa-answer"><span class="qa-label">A:</span> Answer: <strong>B) 3</strong></p>
+            <p class="qa-metric"><span class="qa-label">Metric:</span> Exact-match accuracy</p>
+          </figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+  <!-- End Dataset Examples -->
 
 
   <!-- Abstract -->
@@ -134,13 +236,22 @@
   <!-- End abstract -->
 
 
+  <!-- Pipeline figure -->
+  <section class="section figure-section">
+    <div class="container is-max-widescreen has-text-centered">
+      <img src="static/images/SurgSTU-Pipeline.png"
+           alt="The SurgSTU-Pipeline: surgical videos plus metadata are converted to structured Event Tuples, continuity-filtered, and completed into spatial-temporal QA templates."
+           class="pipeline-figure"/>
+      <p class="figure-caption">The SurgSTU-Pipeline turns surgical videos and their instrument-localization / action-triplet metadata into structured Event Tuples, applies spatial / temporal / semantic continuity filtering, and completes predefined QA templates &mdash; deterministically, with no LLM in the loop.</p>
+    </div>
+  </section>
+  <!-- End pipeline figure -->
+
+
   <!-- Question type overview -->
   <section class="section qa-types-section">
     <div class="container is-max-desktop">
       <h2 class="title is-3">Question types</h2>
-      <p class="section-lead">
-        Three deterministic generators emit 36 active subcategories. Every question is filled from a Python template against a continuity- and interestingness-filtered window of Event Tuples &mdash; no LLM rewrites or paraphrases anywhere in the pipeline.
-      </p>
 
       <div class="columns is-multiline qa-type-cards">
 
@@ -155,17 +266,17 @@
             <details class="qa-type-details">
               <summary>Show all 11 subcategories</summary>
               <ul class="subcat-list">
-                <li><code>locate</code> <span class="diff diff-easy">easy</span><br><em>"Locate the grasper at 4.20 s and provide its bounding box."</em></li>
-                <li><code>window</code> <span class="diff diff-easy">easy</span><br><em>"For every instrument visible at 4.20 s, provide a temporal window during which it remains visible."</em></li>
-                <li><code>identify_bbox</code> <span class="diff diff-easy">easy</span><br><em>"Which instrument is located at the bounding box <code>[412, 188, 591, 374]</code> at 4.20 s?"</em></li>
-                <li><code>segment</code> <span class="diff diff-medium">medium</span><br><em>"In which of the 3&times;3 frame regions does the grasper reside at 4.20 s?"</em></li>
-                <li><code>closest</code> <span class="diff diff-easy">easy</span><br><em>"Which instrument is closest to the coordinates <code>[0.43, 0.58]</code> at 4.20 s?"</em></li>
-                <li><code>trajectory</code> <span class="diff diff-medium">medium</span><br><em>"Trace the trajectory of the grasper between 4.20 s and 7.80 s as bounding boxes at the leftmost and rightmost extrema."</em></li>
-                <li><code>rel_pos</code> <span class="diff diff-medium">medium</span><br><em>"Describe the relative position of the grasper with respect to the hook at 4.20 s."</em></li>
-                <li><code>rel_change</code> <span class="diff diff-hard">hard</span><br><em>"Between 4.20 s and 7.80 s, did the grasper move closer to, further from, or approximately maintain its distance from the hook?"</em></li>
-                <li><code>locate_by_action</code> <span class="diff diff-medium">medium</span><br><em>"At 4.20 s, provide the bounding box of the instrument performing &lsquo;grasp&rsquo;."</em></li>
-                <li><code>locate_by_target</code> <span class="diff diff-medium">medium</span><br><em>"At 4.20 s, locate the instrument interacting with the gallbladder."</em></li>
-                <li><code>refusal_absent_instrument</code> <span class="diff diff-medium">medium</span><br><em>"Where is the bipolar at 4.20 s?" &mdash; answer: not present in this clip.</em></li>
+                <li><code>locate</code><br><em>"Locate the grasper at 4.20 s and provide its bounding box."</em></li>
+                <li><code>window</code><br><em>"For every instrument visible at 4.20 s, provide a temporal window during which it remains visible."</em></li>
+                <li><code>identify_bbox</code><br><em>"Which instrument is located at the bounding box <code>[412, 188, 591, 374]</code> at 4.20 s?"</em></li>
+                <li><code>segment</code><br><em>"In which of the 3&times;3 frame regions does the grasper reside at 4.20 s?"</em></li>
+                <li><code>closest</code><br><em>"Which instrument is closest to the coordinates <code>[0.43, 0.58]</code> at 4.20 s?"</em></li>
+                <li><code>trajectory</code><br><em>"Trace the trajectory of the grasper between 4.20 s and 7.80 s as bounding boxes at the leftmost and rightmost extrema."</em></li>
+                <li><code>rel_pos</code><br><em>"Describe the relative position of the grasper with respect to the hook at 4.20 s."</em></li>
+                <li><code>rel_change</code><br><em>"Between 4.20 s and 7.80 s, did the grasper move closer to, further from, or approximately maintain its distance from the hook?"</em></li>
+                <li><code>locate_by_action</code><br><em>"At 4.20 s, provide the bounding box of the instrument performing &lsquo;grasp&rsquo;."</em></li>
+                <li><code>locate_by_target</code><br><em>"At 4.20 s, locate the instrument interacting with the gallbladder."</em></li>
+                <li><code>refusal_absent_instrument</code><br><em>"Where is the bipolar at 4.20 s?" &mdash; answer: not present in this clip.</em></li>
               </ul>
             </details>
           </div>
@@ -182,13 +293,13 @@
             <details class="qa-type-details">
               <summary>Show all 7 subcategories</summary>
               <ul class="subcat-list">
-                <li><code>Classes</code> <span class="diff diff-easy">easy</span><br><em>"Which set of instruments is visible at 4.20 s?"</em></li>
-                <li><code>Existence:global</code> <span class="diff diff-easy">easy</span><br><em>"Is a bipolar present anywhere in this clip? (Yes / No)"</em></li>
-                <li><code>Existence:local_inst</code> <span class="diff diff-easy">easy</span><br><em>"Is the grasper present at 4.20 s? (Yes / No)"</em></li>
-                <li><code>Existence:local_target</code> <span class="diff diff-medium">medium</span><br><em>"Is any instrument interacting with the gallbladder at 4.20 s? (Yes / No)"</em></li>
-                <li><code>Counting:distinct</code> <span class="diff diff-medium">medium</span><br><em>"How many distinct instrument classes appear between 4.20 s and 9.30 s?"</em></li>
-                <li><code>Counting:specific</code> <span class="diff diff-medium">medium</span><br><em>"How many graspers are visible at 4.20 s?"</em></li>
-                <li><code>Counting:concurrent</code> <span class="diff diff-medium">medium</span><br><em>"What is the maximum number of instruments visible simultaneously between 4.20 s and 9.30 s?"</em></li>
+                <li><code>Classes</code><br><em>"Which set of instruments is visible at 4.20 s?"</em></li>
+                <li><code>Existence:global</code><br><em>"Is a bipolar present anywhere in this clip? (Yes / No)"</em></li>
+                <li><code>Existence:local_inst</code><br><em>"Is the grasper present at 4.20 s? (Yes / No)"</em></li>
+                <li><code>Existence:local_target</code><br><em>"Is any instrument interacting with the gallbladder at 4.20 s? (Yes / No)"</em></li>
+                <li><code>Counting:distinct</code><br><em>"How many distinct instrument classes appear between 4.20 s and 9.30 s?"</em></li>
+                <li><code>Counting:specific</code><br><em>"How many graspers are visible at 4.20 s?"</em></li>
+                <li><code>Counting:concurrent</code><br><em>"What is the maximum number of instruments visible simultaneously between 4.20 s and 9.30 s?"</em></li>
               </ul>
             </details>
           </div>
@@ -206,33 +317,33 @@
               <summary>Show all 18 subcategories</summary>
               <p class="bucket-label">Bucket A &mdash; temporal aggregation</p>
               <ul class="subcat-list">
-                <li><code>interaction_duration</code> <span class="diff diff-medium">medium</span><br><em>"For how long does the grasper interact with the gallbladder between 0 s and 14 s?"</em></li>
-                <li><code>interaction_count</code> <span class="diff diff-medium">medium</span><br><em>"How many times does the grasper perform &lsquo;grasp&rsquo; over the clip?"</em></li>
-                <li><code>longest_continuous_action</code> <span class="diff diff-hard">hard</span><br><em>"What is the longest continuous (grasp, gallbladder) interaction in the clip?"</em></li>
-                <li><code>idle_duration</code> <span class="diff diff-medium">medium</span><br><em>"What fraction of the clip is the grasper idling?"</em></li>
+                <li><code>interaction_duration</code><br><em>"For how long does the grasper interact with the gallbladder between 0 s and 14 s?"</em></li>
+                <li><code>interaction_count</code><br><em>"How many times does the grasper perform &lsquo;grasp&rsquo; over the clip?"</em></li>
+                <li><code>longest_continuous_action</code><br><em>"What is the longest continuous (grasp, gallbladder) interaction in the clip?"</em></li>
+                <li><code>idle_duration</code><br><em>"What fraction of the clip is the grasper idling?"</em></li>
               </ul>
               <p class="bucket-label">Bucket B &mdash; ordering</p>
               <ul class="subcat-list">
-                <li><code>first_appearance_time</code> <span class="diff diff-easy">easy</span><br><em>"At what time does the grasper first appear?"</em></li>
-                <li><code>last_appearance_time</code> <span class="diff diff-easy">easy</span><br><em>"At what time is the grasper last visible?"</em></li>
-                <li><code>first_action</code> <span class="diff diff-medium">medium</span><br><em>"What is the first action the grasper performs?"</em></li>
-                <li><code>action_sequence</code> <span class="diff diff-hard">hard</span><br><em>"List the chronological sequence of (verb, target) pairs the grasper performs."</em></li>
+                <li><code>first_appearance_time</code><br><em>"At what time does the grasper first appear?"</em></li>
+                <li><code>last_appearance_time</code><br><em>"At what time is the grasper last visible?"</em></li>
+                <li><code>first_action</code><br><em>"What is the first action the grasper performs?"</em></li>
+                <li><code>action_sequence</code><br><em>"List the chronological sequence of (verb, target) pairs the grasper performs."</em></li>
               </ul>
               <p class="bucket-label">Bucket C &mdash; whole-clip MCQ</p>
               <ul class="subcat-list">
-                <li><code>most_active_instrument</code> <span class="diff diff-medium">medium</span><br><em>"Which instrument is most active over the whole clip?"</em></li>
-                <li><code>most_target_diversity_instrument</code> <span class="diff diff-hard">hard</span><br><em>"Which instrument interacts with the most distinct anatomical targets?"</em></li>
-                <li><code>dominant_verb</code> <span class="diff diff-medium">medium</span><br><em>"What is the dominant verb performed across the clip?"</em></li>
-                <li><code>distinct_targets_touched</code> <span class="diff diff-medium">medium</span><br><em>"How many distinct anatomical targets does any instrument touch in the clip?"</em></li>
+                <li><code>most_active_instrument</code><br><em>"Which instrument is most active over the whole clip?"</em></li>
+                <li><code>most_target_diversity_instrument</code><br><em>"Which instrument interacts with the most distinct anatomical targets?"</em></li>
+                <li><code>dominant_verb</code><br><em>"What is the dominant verb performed across the clip?"</em></li>
+                <li><code>distinct_targets_touched</code><br><em>"How many distinct anatomical targets does any instrument touch in the clip?"</em></li>
               </ul>
               <p class="bucket-label">Legacy + refusal</p>
               <ul class="subcat-list">
-                <li><code>target_interaction</code> <span class="diff diff-medium">medium</span><br><em>"At 4.20 s, what target is the grasper interacting with?"</em></li>
-                <li><code>action_status</code> <span class="diff diff-medium">medium</span><br><em>"At 4.20 s, is the grasper actively performing an action or idling?"</em></li>
-                <li><code>next_action</code> <span class="diff diff-hard">hard</span><br><em>"What action does the grasper perform next after 4.20 s?"</em></li>
-                <li><code>comparison</code> <span class="diff diff-hard">hard</span><br><em>"Between 4.20 s and 7.80 s, do the grasper and the hook interact with the same target?"</em></li>
-                <li><code>reverse_target</code> <span class="diff diff-medium">medium</span><br><em>"At 4.20 s, which instrument is interacting with the cystic duct?"</em></li>
-                <li><code>refusal_no_specific_action</code> <span class="diff diff-easy">easy</span><br><em>"What action is the grasper performing at 4.20 s?" &mdash; answer: idling, no specific action.</em></li>
+                <li><code>target_interaction</code><br><em>"At 4.20 s, what target is the grasper interacting with?"</em></li>
+                <li><code>action_status</code><br><em>"At 4.20 s, is the grasper actively performing an action or idling?"</em></li>
+                <li><code>next_action</code><br><em>"What action does the grasper perform next after 4.20 s?"</em></li>
+                <li><code>comparison</code><br><em>"Between 4.20 s and 7.80 s, do the grasper and the hook interact with the same target?"</em></li>
+                <li><code>reverse_target</code><br><em>"At 4.20 s, which instrument is interacting with the cystic duct?"</em></li>
+                <li><code>refusal_no_specific_action</code><br><em>"What action is the grasper performing at 4.20 s?" &mdash; answer: idling, no specific action.</em></li>
               </ul>
             </details>
           </div>
@@ -244,199 +355,13 @@
   <!-- End question type overview -->
 
 
-  <!-- QA video gallery -->
-  <section class="section gallery-section">
-    <div class="container is-max-widescreen">
-      <h2 class="title is-3">QA samples in action</h2>
-      <p class="section-lead">
-        Each example shows a clip with the bounding-box overlay drawn by <code>verify_qa_overlay.py</code> (yellow-orange = question anchor, cyan = answer anchor), followed by the full question, the ground-truth answer, and the metric used to score it.
-      </p>
-      <div class="qa-grid">
-
-        <!-- Slot 1: Spatial-Temporal Grounding · locate · easy · cholec -->
-        <figure class="qa-card">
-          <div class="qa-video-wrap">
-            <video autoplay muted loop playsinline preload="metadata"
-                   src="static/videos/qa_examples/spatiotemporal_locate.mp4"></video>
-          </div>
-          <figcaption class="qa-caption">
-            <div class="qa-meta">
-              <span class="chip chip-spatio">Spatial-Temporal Grounding</span>
-              <span class="qa-subcat">locate</span>
-              <span class="diff diff-easy">easy</span>
-              <span class="qa-proc">cholec</span>
-            </div>
-            <p class="qa-question"><span class="qa-label">Q:</span> Locate the surgical instrument <strong>hook</strong> at 18.40&nbsp;s and provide its bounding box coordinates <code>[x1, y1, x2, y2]</code> in normalized <code>[0, 1000]</code> format.</p>
-            <p class="qa-answer"><span class="qa-label">A:</span> The hook is located at <code>{"bbox_2d": [499.5, 131.6, 587.4, 311.2]}</code> (normalized <code>[0, 1000]</code> format).</p>
-            <p class="qa-metric"><span class="qa-label">Metric:</span> IoU + center distance</p>
-          </figcaption>
-        </figure>
-
-        <!-- Slot 2: Spatial-Temporal Grounding · locate_by_target · medium · prosta -->
-        <figure class="qa-card">
-          <div class="qa-video-wrap">
-            <video autoplay muted loop playsinline preload="metadata"
-                   src="static/videos/qa_examples/spatiotemporal_locate_by_target.mp4"></video>
-          </div>
-          <figcaption class="qa-caption">
-            <div class="qa-meta">
-              <span class="chip chip-spatio">Spatial-Temporal Grounding</span>
-              <span class="qa-subcat">locate_by_target</span>
-              <span class="diff diff-medium">medium</span>
-              <span class="qa-proc">prosta</span>
-            </div>
-            <p class="qa-question"><span class="qa-label">Q:</span> At 16.00&nbsp;s, locate the surgical instrument that is interacting with the <strong>fluid</strong>. Provide its bounding box <code>[x1, y1, x2, y2]</code> in normalized <code>[0, 1000]</code> format.</p>
-            <p class="qa-answer"><span class="qa-label">A:</span> The aspirator is interacting with the fluid and is located at <code>{"bbox_2d": [476.8, 510.9, 689.5, 1000.0]}</code> (normalized <code>[0, 1000]</code> format).</p>
-            <p class="qa-metric"><span class="qa-label">Metric:</span> IoU + center distance</p>
-          </figcaption>
-        </figure>
-
-        <!-- Slot 3: Multi Choice · Counting:concurrent · medium · cholec -->
-        <figure class="qa-card">
-          <div class="qa-video-wrap">
-            <video autoplay muted loop playsinline preload="metadata"
-                   src="static/videos/qa_examples/multichoice_counting_concurrent.mp4"></video>
-          </div>
-          <figcaption class="qa-caption">
-            <div class="qa-meta">
-              <span class="chip chip-multichoice">Multi Choice</span>
-              <span class="qa-subcat">Counting:concurrent</span>
-              <span class="diff diff-medium">medium</span>
-              <span class="qa-proc">cholec</span>
-            </div>
-            <p class="qa-question"><span class="qa-label">Q:</span> Identify the maximum number of instruments visible simultaneously during the transition between 8.93&nbsp;s and 17.93&nbsp;s. <em>Options:</em> A) 0 &nbsp; B) 2 &nbsp; C) 4 &nbsp; D) 1</p>
-            <p class="qa-answer"><span class="qa-label">A:</span> Answer: <strong>D) 1</strong></p>
-            <p class="qa-metric"><span class="qa-label">Metric:</span> Exact-match accuracy</p>
-          </figcaption>
-        </figure>
-
-        <!-- Slot 4: Multi Choice · Existence:global · easy · prosta -->
-        <figure class="qa-card">
-          <div class="qa-video-wrap">
-            <video autoplay muted loop playsinline preload="metadata"
-                   src="static/videos/qa_examples/multichoice_existence_global.mp4"></video>
-          </div>
-          <figcaption class="qa-caption">
-            <div class="qa-meta">
-              <span class="chip chip-multichoice">Multi Choice</span>
-              <span class="qa-subcat">Existence:global</span>
-              <span class="diff diff-easy">easy</span>
-              <span class="qa-proc">prosta</span>
-            </div>
-            <p class="qa-question"><span class="qa-label">Q:</span> Does the surgical instrument <strong>grasper</strong> appear at any point throughout the duration of this footage? <em>Options:</em> A) Yes &nbsp; B) No</p>
-            <p class="qa-answer"><span class="qa-label">A:</span> Answer: <strong>B) No</strong></p>
-            <p class="qa-metric"><span class="qa-label">Metric:</span> Exact-match accuracy</p>
-          </figcaption>
-        </figure>
-
-        <!-- Slot 5: Spatial-Temporal Interaction Captioning · target_interaction · medium · cholec -->
-        <figure class="qa-card">
-          <div class="qa-video-wrap">
-            <video autoplay muted loop playsinline preload="metadata"
-                   src="static/videos/qa_examples/interaction_target_interaction.mp4"></video>
-          </div>
-          <figcaption class="qa-caption">
-            <div class="qa-meta">
-              <span class="chip chip-interaction">Spatial-Temporal Interaction Captioning</span>
-              <span class="qa-subcat">target_interaction</span>
-              <span class="diff diff-medium">medium</span>
-              <span class="qa-proc">cholec</span>
-            </div>
-            <p class="qa-question"><span class="qa-label">Q:</span> Identify the specific target that the surgical instrument <strong>hook</strong> is engaged with between 0.00&nbsp;s and 24.93&nbsp;s, basing your conclusion solely on the instrument and the verb/action performed.</p>
-            <p class="qa-answer"><span class="qa-label">A:</span> The hook is interacting with <strong>no specific target</strong>.</p>
-            <p class="qa-metric"><span class="qa-label">Metric:</span> Exact-match (target label)</p>
-          </figcaption>
-        </figure>
-
-        <!-- Slot 6: Spatial-Temporal Interaction Captioning · comparison · hard · prosta -->
-        <figure class="qa-card">
-          <div class="qa-video-wrap">
-            <video autoplay muted loop playsinline preload="metadata"
-                   src="static/videos/qa_examples/interaction_comparison.mp4"></video>
-          </div>
-          <figcaption class="qa-caption">
-            <div class="qa-meta">
-              <span class="chip chip-interaction">Spatial-Temporal Interaction Captioning</span>
-              <span class="qa-subcat">comparison</span>
-              <span class="diff diff-hard">hard</span>
-              <span class="qa-proc">prosta</span>
-            </div>
-            <p class="qa-question"><span class="qa-label">Q:</span> Between 26.07&nbsp;s and 29.57&nbsp;s, identify the target of the surgical instrument <strong>clip applier</strong> and the target of the surgical instrument <strong>forceps</strong>, and then state whether the two instruments are interacting with the same target.</p>
-            <p class="qa-answer"><span class="qa-label">A:</span> Clip applier is interacting with <strong>prostate</strong>; forceps is interacting with <strong>prostate</strong>. Verdict: <strong>Yes</strong> &mdash; both instruments share the target prostate.</p>
-            <p class="qa-metric"><span class="qa-label">Metric:</span> Binary same-target accuracy + set F1 over target pair</p>
-          </figcaption>
-        </figure>
-
-      </div>
-    </div>
-  </section>
-  <!-- End QA video gallery -->
-
-
-  <!-- FAQ -->
-  <section class="section faq-section">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3">FAQ</h2>
-
-      <details class="faq-item">
-        <summary>How did you ensure the dataset isn&rsquo;t dominated by &ldquo;grasper grasps gallbladder&rdquo; samples?</summary>
-        <div class="faq-answer">
-          <p>The pipeline applies dataset-level rejection sampling on 14 categorical templates using per-procedure, per-correct-answer accept maps. The orchestrator probabilistically drops samples whose correct answer is over-represented for the procedure. Concrete impact &mdash; the modal answer share on <code>reverse_target</code> dropped from 91&nbsp;% to 51&nbsp;%, on <code>idle_duration</code> from 93&nbsp;% to 49&nbsp;%, and similar reductions elsewhere.</p>
-          <p>A handful of templates still retain a top-1 share above 35&nbsp;% (<code>comparison</code> <code>Yes</code> at 52&nbsp;%, <code>idle_duration</code> <code>[50%+]</code> at 45&nbsp;%, <code>rel_change</code> <code>maintained</code> at 46&nbsp;%, <code>most_active_instrument</code> <code>grasper</code> at 41&nbsp;%); we surface these openly rather than over-prune the corpus.</p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>How did you ensure that motion and displacement are large enough to be evaluable?</summary>
-        <div class="faq-answer">
-          <p>Every motion-sensitive template has an interestingness gate. Trajectory requires an x-range <em>or</em> y-range above <code>MIN_TRAJECTORY_RANGE = 0.20</code> (normalized). Relative-change requires <code>|&Delta;distance| &ge; 0.30</code>. Relative-position requires <code>|dx|</code> <em>and</em> <code>|dy|</code> both above <code>0.18</code>. Time-window templates need &ge; 2&nbsp;s of motion.</p>
-          <p>Failed gates re-roll; samples that consistently fail are dropped silently. Phase&nbsp;2.6 also tightened the spatial-continuity gate to <strong>0.6 normalized-diagonal/sec</strong> and the temporal-gap gate to <strong>0.7&nbsp;s</strong>, so trajectories built from bbox jitter are filtered out before they reach any template.</p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>No LLM in the loop &mdash; really?</summary>
-        <div class="faq-answer">
-          <p>Yes. Every question and answer is filled from a deterministic Python template against normalized event tuples. No model paraphrases the questions and no model judges the answers. Re-running with the default random seed (42) produces byte-identical output.</p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Where do the bounding boxes come from? Same provenance for both procedures?</summary>
-        <div class="faq-answer">
-          <p>No &mdash; and this matters. CholecT50 boxes come from CholecTrack20. ProstaTD boxes are internally annotated by the authors pending the official ProstaTD bbox release. Both are normalized to the same <code>(x1, x2, y1, y2)</code> order against each video&rsquo;s true frame dimensions.</p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>How does the train / val / test split avoid leakage?</summary>
-        <div class="faq-answer">
-          <p>A single procedure-to-split map is built once and applied to both video and image modalities, so a <code>cholec_42</code> clip is in the same split everywhere. An <code>assert_no_overlap</code> check runs before any file is written.</p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Are there refusal samples? Why?</summary>
-        <div class="faq-answer">
-          <p>Yes &mdash; about 5&nbsp;% of the corpus. Two refusal templates: <code>refusal_absent_instrument</code> (asked about an instrument that never appears in the clip) and <code>refusal_no_specific_action</code> (asked about a verb when the instrument is idling). Without them a model learns to always produce a confident bbox or verb. Higher fractions push models toward over-refusal on legitimate queries.</p>
-        </div>
-      </details>
-
-    </div>
-  </section>
-  <!-- End FAQ -->
-
-
   <!-- Acknowledgements -->
   <section class="section ack-section">
     <div class="container is-max-desktop">
-      <h2 class="title is-3">Acknowledgements &amp; source datasets</h2>
+      <h2 class="title is-3">Acknowledgements</h2>
       <div class="content">
         <p>
-          SurgSTU stands entirely on publicly available surgical annotation work. The cholecystectomy half builds on <strong>CholecT50</strong> (Nwoye&nbsp;et&nbsp;al.) for instrument-verb-target triplets and on <strong>CholecTrack20</strong> for instrument bounding boxes. The prostatectomy half builds on <strong>ProstaTD</strong> for instrument-verb-target annotations; ProstaTD bounding boxes are internally annotated by the authors pending an official ProstaTD bbox release.
-        </p>
-        <p>
-          This work was conducted at the Institute of Medical Technology and Intelligent Systems (IMETUM), Hamburg University of Technology. We thank the maintainers of CholecT50, CholecTrack20, and ProstaTD for releasing their annotations openly.
+          SurgSTU currently stands on publicly available surgical datasets. The cholecystectomy half builds on <strong>CholecT50</strong> (Nwoye et al.) for instrument-verb-target triplets and on <strong>CholecTrack20</strong> (Nwoye et al.) for instrument bounding boxes. The prostatectomy half builds on <strong>ProstaTD</strong> for instrument-verb-target annotations; ProstaTD bounding boxes are internally annotated by the authors.
         </p>
       </div>
     </div>
@@ -454,11 +379,12 @@
           <span class="copy-text">Copy</span>
         </button>
       </div>
-      <pre><code id="bibtex-code">@inproceedings{maack2026surgstu,
-    title={An Approach to Enriching Surgical Video Datasets for Fine-Grained Spatial-Temporal Understanding of Vision-Language Models},
-    author={Maack, Lennart and Schlaefer, Alexander},
-    booktitle={CVPR Workshop on Data Curation and Augmentation in Computer Vision (DataCV)},
-    year={2026}
+      <pre><code id="bibtex-code">@inproceedings{maack2026approach,
+  title={An Approach to Enriching Surgical Video Datasets for Fine-Grained Spatial-Temporal Understanding of Vision-Language Models},
+  author={Maack, Lennart and Schlaefer, Alexander},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={2945--2954},
+  year={2026}
 }</code></pre>
     </div>
   </section>

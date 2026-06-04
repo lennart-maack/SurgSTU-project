@@ -31,15 +31,17 @@ RAW="$OUT/_raw"
 
 mkdir -p "$RAW"
 
-# Curated source clips. Extend / replace if your current dataset surfaces the
-# six featured subcategories from different files. verify_qa_overlay.py emits
-# a stratified pool per clip, so two clips × 12 QAs/clip × 3 categories
-# usually yields multiple candidates for each gallery slot.
+# Curated source clips — the four ProstaTD/PSI clips that surface the six
+# featured subcategories. They match the examples shown on the conference
+# poster. verify_qa_overlay.py stratifies QAs per clip; if a target
+# subcategory does not appear, raise --num-qas-per-clip (some subcategories
+# lose the round-robin at a low cap — 40-60 reliably surfaces all of them).
 CLIPS=(
-    cholec_01_0_21
-    prostaTD_psiv15_clip_000252144_000253098
-    cholec_12_2_30
-    prostaTD_psiv03_clip_000180020_000181000
+    prostaTD_psiv14_clip_000293956_000295196
+    prostaTD_psiv14_clip_000295992_000297244
+    prostaTD_psiv14_clip_000305550_000306887
+    prostaTD_psiv14_clip_000294970_000296217
+    prostaTD_psiv14_clip_000323883_000325042
 )
 
 python "$PROJECT_ROOT/utils/data/verify_qa_overlay.py" \
@@ -48,7 +50,7 @@ python "$PROJECT_ROOT/utils/data/verify_qa_overlay.py" \
     --qa-dir       "$ROOT/qa_conversations" \
     --output-dir   "$RAW" \
     --clips        "${CLIPS[@]}" \
-    --num-qas-per-clip 12 \
+    --num-qas-per-clip 40 \
     --no-panels \
     --no-tracks-video \
     --seed 42
@@ -59,18 +61,18 @@ python "$PROJECT_ROOT/utils/data/verify_qa_overlay.py" \
 # verify_qa_overlay.py writes outputs as:
 #   $RAW/<clip_stem>/<idx>_<Category>_<subcategory>_<difficulty>.mp4
 #
-# The six gallery slots (in HTML order) and their final filenames are:
+# The six gallery slots (in HTML order), their source clip, and final filename:
 #
-#   #1  Spatial-Temporal Grounding         · locate              ·  easy   · cholec → spatiotemporal_locate.mp4
-#   #2  Spatial-Temporal Grounding         · locate_by_target    ·  medium · prosta → spatiotemporal_locate_by_target.mp4
-#   #3  Multi Choice                       · Counting:concurrent ·  medium · cholec → multichoice_counting_concurrent.mp4
-#   #4  Multi Choice                       · Existence:global    ·  easy   · prosta → multichoice_existence_global.mp4
-#   #5  Spatial-Temporal Interaction Cap.  · target_interaction  ·  medium · cholec → interaction_target_interaction.mp4
-#   #6  Spatial-Temporal Interaction Cap.  · comparison          ·  hard   · prosta → interaction_comparison.mp4
+#   #1  Spatial-Temporal Grounding         · identify_bbox       · psiv14_..293956 → spatiotemporal_identify_bbox.mp4
+#   #2  Spatial-Temporal Interaction Cap.  · reverse_target      · psiv14_..295992 → interaction_reverse_target.mp4
+#   #3  Spatial-Temporal Grounding         · trajectory          · psiv14_..305550 → spatiotemporal_trajectory.mp4
+#   #4  Spatial-Temporal Interaction Cap.  · next_action_target  · psiv14_..294970 → interaction_next_action.mp4
+#   #5  Spatial-Temporal Grounding         · rel_change          · psiv14_..323883 → spatiotemporal_rel_change.mp4
+#   #6  Multi Choice                       · Counting:concurrent · psiv14_..293956 → multichoice_counting_concurrent.mp4
 #
-# All six picks correspond to templates that DO have explicit evaluation
-# functions in evaluation/metrics.py, so the "Metric:" line on each gallery
-# card is publishable today.
+# These six question types are the ones featured on the SurgSTU conference
+# poster (poster/figures/qa_examples/qa_pairs.txt). The Q/A text shown beneath
+# each video on the page is taken verbatim from the matching qa_index.txt.
 # ---------------------------------------------------------------------------
 # Downsample recipe (target ~1-3 MB per clip):
 #
